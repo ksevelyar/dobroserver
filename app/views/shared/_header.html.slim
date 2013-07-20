@@ -1,0 +1,11 @@
+header
+  nav
+    ul.left
+      li= link_to SETTINGS["title"], root_path, class: "logo"
+      /*li= link_to "Проекты", projects_path*/
+
+    /ul.right
+      - if signed_in?
+        li= current_user.name
+
+

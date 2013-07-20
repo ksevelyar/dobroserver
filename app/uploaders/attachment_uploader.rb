@@ -1,0 +1,2 @@
+class AttachmentUploader < BlogRecordUploader
+end

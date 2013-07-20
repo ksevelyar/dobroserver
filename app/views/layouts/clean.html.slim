@@ -1,0 +1,27 @@
+doctype
+html
+  head
+    title
+      - if @meta_title
+        = "#{@meta_title} › #{SETTINGS['title']}"
+      - else
+        = SETTINGS["title"]
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    "application_global", :media => "all"
+    = javascript_include_tag "application_global"
+
+    link rel="icon" href="/favicon.png"
+
+    = auto_discovery_link_tag :atom, "/feed"
+
+  body
+    = render 'shared/header'
+    .wrapper
+      .content
+        - flash.each do |key, value|
+          div class="alert alert-#{key}" =value
+        = yield
+    = render 'shared/footer'
+

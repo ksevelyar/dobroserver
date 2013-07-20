@@ -1,0 +1,9 @@
+li.attachment id="attachment#{attachment.id}"
+  a.insert href="#insert"
+
+    span.name= attachment.attachment.file.filename
+    span.size= number_to_human_size(attachment.attachment.file.size, precision: 2)
+
+  a.remove= link_to "delete", [@record, attachment], method: :delete,
+                                                     remote: true,
+                                                     class: "remove"

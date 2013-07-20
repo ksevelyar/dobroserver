@@ -1,0 +1,5 @@
+= form_for [@record, @attachment], html: {multipart: true, class: "attachments_form"} do |f|
+  p
+    = f.file_field :attachment, multiple: true
+  p
+    = f.submit

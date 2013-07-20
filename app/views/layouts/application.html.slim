@@ -1,0 +1,25 @@
+doctype
+html
+  head
+    title
+      - if @meta_title
+        = "#{@meta_title} › #{SETTINGS['title']}"
+      - else
+        = SETTINGS["title"]
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    "application_global", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application_global", "data-turbolinks-track" => true
+
+    link rel="icon" href="/favicon.png"
+    = auto_discovery_link_tag :atom, "/feed"
+
+  body
+    = render "shared/header"
+    .wrapper
+      .content
+        = yield
+      = render "shared/sidebar"
+    = render "shared/footer"
+    = render "shared/google_analytics" if Rails.env.production?

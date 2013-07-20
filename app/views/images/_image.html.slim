@@ -1,0 +1,14 @@
+li.image id="image#{image.id}"
+  a.insert href="#insert"
+
+    - if image.preview?
+      img alt="" class="preview" src=image.preview
+    - else
+      img alt="" src=image.image_url
+
+    span.name= image.filename
+    span.size= number_to_human_size(image.size, precision: 2)
+
+  a.remove= link_to "delete", [@record, image], method: :delete,
+                                                remote: true,
+                                                class:  "remove"

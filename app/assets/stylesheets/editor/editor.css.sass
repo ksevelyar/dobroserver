@@ -1,0 +1,81 @@
+*
+  padding: 0
+  margin: 0
+
+.editor
+  position: relative
+
+.textarea-container
+  margin-right: 250px
+  //width: 100%
+
+
+textarea
+  min-height: 700px
+  max-height: 700px
+  background: #f2f2f2
+  width: 100%
+
+#filelist
+  min-height: 700px
+  max-height: 700px
+  overflow-y: auto
+  position: absolute
+  width: 250px
+  right: 0
+  top: 0
+
+  li
+    background: none
+    margin-left: 0
+    position: relative
+    width: 100%
+    padding: 1%
+    float: left
+  span
+    background: #000
+    color: #f3f1ed
+    border-radius: 2px
+
+  .remove
+    background: #A33B58
+    color: #f3f1ed
+
+
+.image
+  span
+    position: absolute
+    right: 0.3em
+    padding: 0 0.25em
+
+  span.name
+    top: 0.3em
+
+  span.size
+    top: 2.0em
+
+  .remove
+    position: absolute
+    right: 0.3em
+    bottom: 0.5em
+
+    padding: 0 0.25em
+    border-radius: 2px
+    display: none
+
+  &:hover .remove
+    display: block
+
+// Прячем кнопки для загрузки изображений и вложений (и активируем их по ссылкам)
+.images_form, .attachments_form
+  display: none
+
+.buttons_panel
+  input
+    float: left
+    margin-right: 5px
+
+input[type="text"]
+  min-width: 300px
+  margin-right: 5px
+  margin-bottom: 5px

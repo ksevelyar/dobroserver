@@ -1,0 +1,22 @@
+= render "shared/form_errors", object: @post
+
+= form_for @post, remote: true, html: { class: "space" } do |f|
+  .clearfix
+    = f.text_field :title, class: "left"
+    = link_to @post.title, @post if @post.title
+  .clearfix
+    = f.text_field :published_at, value: text_date(@post.published_at), class: "left"
+    = f.check_box :published
+  .clearfix
+    = f.text_field :tag_names
+
+  .clearfix.editor
+    .textarea-container
+      = f.text_area :raw_content
+    ul#filelist
+      = render @post.attachments if @post.attachments.any?
+      = render @post.images if @post.images.any?
+  .buttons_panel
+    = f.submit "Save"
+    input.upload_image type="submit" value="Upload Image"
+    input.upload_attachment type="submit" value="Upload Attachment"

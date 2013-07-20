@@ -1,0 +1,10 @@
+- count = @post.comments.count
+
+.comment id="comment-#{count}"
+  .clearfix
+    .number= link_to "##{count}", post_path(@post, :anchor => "comment-#{count}")
+    = gravatar_for comment.email
+    cite= comment.name
+    br
+    time= comment.created_at.strftime('%d.%m.%y в %H:%M')
+  div= space comment.content

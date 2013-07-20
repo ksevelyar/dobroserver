@@ -1,0 +1,10 @@
+section
+  h1 Обратная связь
+  = form_for @message, :url => contact_path, :html => {class: "message_form"} do |form|
+    .clearfix
+      = form.text_field :name, placeholder: "Имя", class: "left"
+      = form.text_field :email, placeholder: "Почта", class: "left"
+    div
+      = form.text_field :subject, placeholder: "Тема письма"
+      = form.text_area :content
+    = form.submit "Отправить"

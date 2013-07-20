@@ -1,0 +1,21 @@
+defaults: &defaults
+  mailer:
+    from: "notifications_fairy@dobroserver.ru"
+    to:   "ksevelyar@dobroserver.ru"
+
+development: &non_production_settings
+  <<: *defaults
+  secret_key_base: "rake secret"
+  domain: localhost:2000
+  title: Dobroserver [dev]
+
+test:
+  <<: *defaults
+  <<: *non_production_settings
+
+production:
+  <<: *defaults
+  secret_key_base: "rake secret"
+  domain: dobroserver.ru
+  title: Dobroserver
+  google_analytics: UA-00000000-0

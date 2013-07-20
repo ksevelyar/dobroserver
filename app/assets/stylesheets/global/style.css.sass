@@ -1,0 +1,604 @@
+$background: #f3f1ed
+$background2: #fff
+$background3: #353535
+
+// --------------------
+// Global
+// --------------------
+
+// fonts
+@font-face
+  font-family: Open Sans
+  src: local('Open Sans'), local('OpenSans'), url('/fonts/OpenSans-Regular.ttf')
+
+@font-face
+  font-family: Open Sans
+  src: url('/fonts/OpenSans-Semibold.ttf')
+  font-weight: bold
+
+@font-face
+  font-family: OpenSans
+  src: url('/fonts/OpenSans-Italic.ttf')
+  font-style: italic, oblique
+
+@font-face
+  font-family: Anonymous Pro
+  src: local('Anonymous Pro'), local('AnonymousPro'), url('/fonts/Anonymous Pro.ttf')
+
+
+*
+  margin: 0
+  padding: 0
+  border: 0
+
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+header, footer, aside, nav, article
+  display: block
+
+a:focus
+  outline: none
+
+::-moz-focus-inner
+  border: 0
+
+.clearfix:before, .clearfix:after
+  content: " "
+  display: table
+
+.clearfix:after
+  clear: both
+
+.right
+  float: right
+
+.left
+  float: left
+
+html, body
+  height: 100%
+  margin: 0
+
+body
+  min-height: 100%
+  height: auto
+  position: relative
+  background-color: $background
+  color: #353535
+
+body >
+  header, footer
+    background-color: #282828
+    //background: linear-gradient(#353535, #000)
+    height: 40px
+    line-height: 40px
+    nav
+      width: 92%
+      max-width: 1300px
+      margin: 0 auto
+
+body >
+  header, footer
+    &, a
+      color: #E1DCD1
+    a
+      &:hover
+        color: #dcdcdc
+
+footer
+  li
+    float: left
+    a
+      margin-left: 20px
+      //color: #dcdcdc
+      border-bottom: 1px dotted #7a7a7a
+      &:hover
+        border-bottom: 1px dotted #E1DCD1
+        color: #E1DCD1
+
+.wrapper, .top
+  width: 92%
+  max-width: 1300px
+  margin: 0 auto
+  margin-top: 10px
+
+.wrapper
+  position: relative
+  padding-bottom: 40px
+  //background-color: $background
+
+
+.logo
+  font-size: 26px
+  //text-shadow: 1px 1px 2px #595959
+  //text-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC
+  //border-bottom: 3px solid #ccc
+
+footer
+  position: absolute
+  bottom: 0
+  width: 100%
+
+.content
+  margin-right: 330px
+  //overflow: hidden
+  //padding: 10px
+
+.wrapper > aside
+  //float: left
+  top: 0
+  right: 0
+  position: absolute
+  width: 300px
+  //padding: 10px
+  //font-size: 0.9em
+
+
+
+// --------------------
+// teaser
+// --------------------
+
+.teaser + .teaser
+  margin-top: 25px
+//  padding-bottom: 5px
+  border-bottom: 1px solid #fff
+  box-shadow: 0px -1px 0px 0px #D9D2C9 inset
+  &:only-child
+    border: none
+    box-shadow: none
+
+.teaser > aside
+  @extend .clearfix
+
+.teaser > header div
+  margin-left: 10px
+
+.tags a
+  background-color: #8cbec3
+  margin-right: 5px
+
+
+
+$color9: #6EA3CD
+//$color9: #7799C0
+
+.comments a, .more a
+  //background-color: #1975C2
+  //background-color: $color9
+
+.comments
+  margin-left: 5px
+  float: right
+  position: relative
+  //&:after
+    content: ""
+    position: absolute
+    top: 95%
+    right: 11px
+    border-top: 5px solid $color9
+    border-right: 5px solid transparent
+    z-index: -1
+
+.more
+  margin-left: 5px
+  float: right
+
+.tags, .comments, .more
+  a
+    //color: $background
+    //color: #fff
+    border-radius: 2px
+    padding: 0px 10px
+    font-size: 14px
+    //border: 1px solid #dcdcdc
+    box-shadow: 0px 1px 2px 0 #777 inset
+    //text-shadow: 0px 1px 1px #999
+
+    color: #C16C8B
+    color: #be224b
+    color: #222
+    //#6CAEC1
+    background: #EAE7DE
+    border-bottom: 1px solid #aaa
+    box-shadow: 0 1px 1px 0px #D9D2C2 inset
+
+    &:hover
+      color: #222
+      color: #be224b
+
+.show
+  a
+    border-bottom: none
+    border-top: 1px solid #aaa
+
+//
+#comments
+  .comment
+    //padding-bottom: 10px
+    margin-bottom: 25px
+    //border-bottom: 1px solid #fff
+    //box-shadow: 0px -1px 0px 0px #D9D2C9 inset
+    &:only-child, &:last-child
+      //border: none
+      //box-shadow: none
+      margin: 0
+      //padding: 0
+
+  .avatar
+    margin-right: 5px
+    border-radius: 3px
+    border: 1px solid #d9d9d9
+    float: left
+
+  .comment .content
+    clear: both
+
+  .comment cite
+    color: #383838
+    font-size: 1.2em
+    font-style: normal
+
+  .comment time
+    font-size: 0.9em
+    color: #adadad
+
+  .comment .number
+    float: right
+
+  .comment .number a
+    color: #adadad
+
+  .number a:hover
+    color: #353535
+
+// -------------------
+// Forms
+// -------------------
+
+form
+  margin-bottom: 10px
+
+input[type=submit]
+  display: block
+  cursor: pointer
+  border-radius: 2px
+  border: solid 1px #6B7F92
+  background-color: #7799C0
+  //color: #fff
+  box-shadow: 0 1px 1px 0px #95BAE7 inset
+  font-size: 14px
+  color: $background
+  padding: 3px
+
+  &:hover
+    color: #fff
+    background-color: #7799C0
+  &:active
+    box-shadow: 0 1px 2px 0px #657D9A inset
+
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea
+  font-family: inherit
+  font-size: 14px
+  background-color: #FBFBFB
+  transition: all 0.1s linear 0s
+  display: block
+
+  border-radius: 2px
+  border: 1px solid #dfddda
+  padding: 2px
+  //float: left
+  //margin-right: 5px
+  &:focus
+    border: 1px solid #C5C5C5
+    background-color: #f9f9f9
+
+#comments_form, .message_form
+  input[type=text], input[type=email]
+    margin-bottom: 5px
+    width: 240px
+    margin-right: 5px
+
+#message_subject
+  width: 485px
+
+#comments_form, .message_form
+  textarea
+    width: 485px
+    height: 170px
+    border-radius: 2px 2px 0 0
+    border-bottom: none
+
+#comments_form, .message_form
+  input[type=submit]
+    width: 485px
+    border-radius: 0 0 2px 2px
+
+#comments_form .spam
+  display: none
+
+#comments_form, #comments
+  margin-top: 25px
+
+// --------------------
+// kaminari
+// --------------------
+
+.pagination
+  @extend .clearfix
+  margin-top: 25px
+  margin-bottom: 10px
+  font-size: 14px
+
+  span
+    background: #EAE7DE
+    border: 1px solid #C5C5C5
+    box-shadow: 0 1px 1px 0px #fff inset
+
+    border-right: none
+    float: left
+
+    &:last-child
+      border: 1px solid #C5C5C5
+
+
+  a
+    display: block
+    padding: 0 10px
+
+    &:active
+      box-shadow: 0px 1px 2px 0 #C5C4C2 inset
+
+
+  .current
+    box-shadow: 0px 1px 2px 0 #C5C4C2 inset
+    padding: 0 10px
+
+  .next
+    border-radius: 0px 3px 3px 0px
+
+  .prev
+    border-radius: 3px 0 0px 3px
+
+  a
+    color: #777
+  a:hover
+    color: #000
+
+time
+  color: #adadad
+  //border-radius: 2px
+  //background: #f7f7f7
+  //padding: 0 5px
+  font-size: 14px
+  //box-shadow: 0px 1px 2px 0 #C5C4C2 inset
+
+.wrapper img
+  border-radius: 2px
+  max-width: 100%
+  height: auto
+
+// Tag cloud
+// ------------
+
+.tag_cloud li
+  display: inline-block
+  background: none !important
+  padding: 0 !important
+  margin: 0 !important
+  margin-right: 5px !important
+  line-height: 1.1
+
+.size-1
+  font-size: 90%
+
+.size-2
+  font-size: 110%
+
+.size-3
+  font-size: 130%
+
+.size-4
+  font-size: 150%
+
+// --------------------------------------
+// Style
+// --------------------------------------
+
+// article
+aside
+  @extend .clearfix
+  .tags
+    float: left
+  time
+    //float: right
+    //margin-left: -76px
+    //margin-left: 10px
+    //display: none
+    //margin-top: 9px
+
+//
+.spoiler_body *:last-child
+  margin-bottom: 0
+
+.spoiler_body, .spoiler_title
+  border: 1px dotted #dcdcdc
+  padding: 5px
+
+
+.minus, .plus
+  font-weight: bold
+
+.plus, .spoiler_body
+  margin-bottom: 10px
+
+.minus:before
+  content: "− "
+
+.plus:before
+  content: "+ "
+
+.spoiler_body
+  border-top: none
+
+// code
+article pre
+  position: relative
+
+
+pre code
+  display: block
+  padding: 5px
+
+code, pre
+  white-space: pre-wrap
+  font-family: Anonymous Pro, monospace
+  font-size: 17px
+  line-height: 21px
+
+code
+  padding: 2px 3px
+  border: 1px solid #dcdcdc
+  //background: #f7f7f7
+  background: #F7F6F5
+  color: #4a4946
+
+
+pre
+  margin-top: 10px
+  .select_all
+
+    -moz-user-select: none
+    -khtml-user-select: none
+    -webkit-user-select: none
+    -o-user-select: none
+    user-select: none
+
+    position: absolute
+    top: 1px
+    right: 1px
+    border-bottom: 1px solid #dcdcdc
+    border-left: 1px solid #dcdcdc
+    padding: 5px
+    display: none
+    background: #f7f7f7
+    cursor: pointer
+  &:hover .select_all
+    display: block
+
+// lists
+
+ol
+  list-style-position: inside
+
+ul
+  list-style: none
+
+.wrapper ul li
+  background: url(image-path('ul.png')) 0% 0.5em no-repeat
+  padding-left: 12px
+  margin-left: -12px
+
+article li
+  margin-left: 0
+
+img
+  border: none
+
+a
+  text-decoration: none
+  color: #547091
+  //color: #7799C0
+
+a:hover
+  color: #be224b
+
+article table
+  margin-bottom: 1em
+
+
+.anchor
+  display: none
+
+article h2,h3,h4,h5,h6
+  //position: relative
+  //padding-left: 20px
+  //margin-left: -20px
+  .anchor
+    color: #777
+    //position: absolute
+    //left: 0px
+  &:hover
+    .anchor
+      display: inline
+
+// ------------------
+// Vertical rhythm
+// ------------------
+
+body
+  min-height: 100%
+  height: auto
+  position: relative
+  background-color: $background
+  font-family: Open Sans, Arial, sans-serif
+  color: #353535
+  font-size: 15px
+  line-height: 1.4
+
+
+.wrapper
+  ol, ul, p, pre
+    //margin-top: 10px
+    margin-bottom: 10px
+    &:last-child
+      margin-bottom: 0
+
+
+h1, h2, h3, h4, h5, h6
+  line-height: 1.1
+  font-weight: 200
+  color: #555
+  margin-top: 25px
+  margin-bottom: 5px
+  //&:first-child
+    margin-top: 0
+  &:last-child
+    margin-bottom: 0
+
+h1 + h2, h2 + h3, h3 + h4, h2 + h2
+  margin-top: 10px
+
+
+.wrapper
+  h1, h2
+    &:first-child
+      margin-top: 0
+
+h1
+  font-size: 30px
+
+h2
+  font-size: 23px
+
+h3
+  font-size: 19px
+
+h4
+  font-size: 120%
+
+p img
+  display: block
+  margin: 10px 0px
+
+article table th,td
+  padding: 10px
+  margin: 0
+  border: 1px solid #dcdcdc
+
+table
+  border-collapse: collapse
+  background: #F7F6F5

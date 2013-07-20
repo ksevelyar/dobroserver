@@ -1,0 +1,5 @@
+= form_for [@record, @image], html: {multipart: true, class: "images_form"} do |f|
+  p
+    = f.file_field :image, multiple: true
+  p
+    = f.submit

@@ -1,0 +1,9 @@
+h1= @tag.name
+- @posts.each do |post|
+  h2= link_to post.title, post
+  - if post.description
+    p= space post.description
+  - else
+    p= space post.content
+
+= paginate @posts

@@ -1,0 +1,14 @@
+#comments_form
+  h2 Добавить комментарий
+  /= form_for [@post, @comment], :remote => true do |f|
+  = form_for [@post, @comment] do |f|
+    div.clearfix
+      = f.text_field :name, placeholder: "Имя или псевдоним", class: "left"
+      = f.email_field :email, placeholder: "Почта", class: "left"
+    div
+      = f.text_area :content
+    .spam
+      = f.text_field :subject
+      = f.text_field :nickname
+    div
+      = f.submit "Отправить"

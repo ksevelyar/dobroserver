@@ -1,0 +1,19 @@
+
+= form_for @page, :html => { :class => "space_form"} do |f|
+  div
+    = f.label :title
+    br
+    = f.text_field :title
+  div
+    = f.datetime_select :published_at
+    = f.check_box :published
+
+  = f.text_area :content
+  ul#filelist
+    = render @images if @images
+  div
+    = f.submit "Отправить"
+
+
+
+

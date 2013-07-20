@@ -1,0 +1,15 @@
+development: &pg
+  adapter: postgresql
+  encoding: unicode
+  database: dobroserver_development
+  pool: 5
+  username: postgres
+  password:
+
+test:
+  <<: *pg
+  database: dobroserver_test
+
+production:
+  <<: *pg
+  database: dobroserver_production
