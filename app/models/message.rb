@@ -23,4 +23,3 @@ class Message
     false
   end
 end
-

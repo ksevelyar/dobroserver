@@ -1,8 +1,12 @@
 class Post < BlogRecord
   attr_writer :raw_content, :tag_names
 
+  validates :user_id, :raw_content, :title, presence: true
+
+  belongs_to :user
   has_many :comments, foreign_key: :blog_record_id, dependent: :destroy
   has_and_belongs_to_many :tags, -> { order(slug: :asc) }, foreign_key: :blog_record_id
+
   before_validation :split
   after_save :assign_tags
 
@@ -15,13 +19,17 @@ class Post < BlogRecord
   end
 
   def tag_names
-    @tag_names || tags.pluck(:name).join(', ')
+    @tag_names || tags.pluck(:name).join(", ")
   end
 
   private
 
+  def micropost?
+    !raw_content.include? "#cut"
+  end
+
   def split
-    if raw_content.include? "#cut"
+    if !micropost?
       self.description = raw_content.split("#cut").first
       self.content     = raw_content.split("#cut").last
     else
@@ -31,6 +39,6 @@ class Post < BlogRecord
   end
 
   def assign_tags
-    self.tags = Tag.find_or_create(@tag_names)
+    self.tags = Tag.find_or_create(@tag_names, micropost?)
   end
 end

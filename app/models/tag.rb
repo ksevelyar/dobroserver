@@ -25,13 +25,12 @@ class Tag < ActiveRecord::Base
   end
 
   # FIXME игнорировать не уникальные slug
-  def self.find_or_create tag_names
-    if tag_names.present?
-      tag_names.split(/,\s*/).map do |name|
-        Tag.find_or_create_by name: name
-      end
-    else
-      [Tag.find_or_create_by(name: "μ")]
+  def self.find_or_create tag_names, micropost=false
+    tags = tag_names.to_s.split(/,\s*/)
+    tags.push "μ" if tags.empty? or micropost
+
+    tags.uniq.map do |name|
+      Tag.find_or_create_by(name: name)
     end
   end
 end

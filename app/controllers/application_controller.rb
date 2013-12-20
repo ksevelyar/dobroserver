@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    User.find_by_remember_token(session[:remember_token])
+    @current_user ||= User.find_by_remember_token(session[:remember_token])
   end
 
   def authorize

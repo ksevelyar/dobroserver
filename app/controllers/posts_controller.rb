@@ -22,12 +22,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
     render layout: "editor"
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to edit_post_path(@post.slug)
     else
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post  = Post.find_by_slug!(params[:id])
+    @post = Post.find_by_slug!(params[:id])
 
     if @post.update_attributes(post_params)
       redirect_to edit_post_path(@post.slug)
