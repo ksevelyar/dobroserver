@@ -5,7 +5,7 @@ Dobroserver::Application.routes.draw do
   get "/feed" => "posts#feed", :as => :feed, :format => "atom"
   get "/ksevelyar" => "pages#show", :as => "show", :id => "ksevelyar"
 
-  #resources :admin
+  resources :admin
 
   resources :sessions, only: [:new, :create, :destroy]
 
