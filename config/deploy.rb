@@ -39,6 +39,7 @@ namespace :deploy do
   task :force_restart do
     on roles(:app) do
       execute "sudo /etc/init.d/unicorn_#{fetch :application} stop"
+      sleep 3
       execute "sudo /etc/init.d/unicorn_#{fetch :application} start"
     end
   end
