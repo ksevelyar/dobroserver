@@ -9,7 +9,7 @@ gem 'coffee-rails'
 
 gem 'jquery-rails'
 gem 'slim-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 
 gem 'kaminari'
 
