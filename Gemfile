@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '>=4.0.2'
 gem 'pg'
 
 gem 'sass-rails'
@@ -44,7 +44,7 @@ group :development do
 
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rvm', ">=0.1.0", require: false
 end
 
 group :test do
