@@ -79,4 +79,12 @@ Dobroserver::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: SETTINGS["domain"] }
+
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+    email_prefix: "[dobroserver][error] ",
+    sender_address: SETTINGS["mailer"]["from"],
+    exception_recipients: SETTINGS["mailer"]["to"],
+    email_format: :html
+  }
 end

@@ -29,6 +29,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
+# deliver 500 errors to email
+gem 'exception_notification'
+
 gem 'unicorn'
 
 group :development, :test do
