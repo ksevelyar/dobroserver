@@ -1,6 +1,6 @@
 = render "shared/form_errors", object: @page
 
-= form_for @page, remote: @post.persisted?, html: { class: "space"} do |f|
+= form_for @page, remote: @page.persisted?, html: { class: "space"} do |f|
   div
     = f.label :title
     br
