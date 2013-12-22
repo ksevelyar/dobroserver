@@ -13,7 +13,7 @@ set :branch, "master"
 set :deploy_via, :export
 set :repo_url, "git@github.com:ksevelyar/dobroserver.git"
 
-# Ssh
+# SSH
 set :ssh_options, {
   user: "ksevelyar",
   forward_agent: true
@@ -21,7 +21,7 @@ set :ssh_options, {
 
 # Capistrano
 set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 set :keep_releases, 7
 
 # Tasks
