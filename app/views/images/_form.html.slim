@@ -1,4 +1,4 @@
-= form_for [@record, @image], html: {multipart: true, class: "images_form"} do |f|
+= form_for [@post or @page, @image], html: {multipart: true, class: "images_form"} do |f|
   p
     = f.file_field :image, multiple: true
   p
