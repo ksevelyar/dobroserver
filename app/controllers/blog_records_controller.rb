@@ -2,8 +2,6 @@ class BlogRecordsController < ApplicationController
   before_filter :find_record, only: [:show, :edit, :update, :destroy]
   before_filter :check_access, only: :show
 
-  protected
-
   def edit
     @attachment = Attachment.new
     @image = Image.new
@@ -16,6 +14,8 @@ class BlogRecordsController < ApplicationController
   def destroy
     @record.destroy
   end
+
+  protected
 
   def find_record
     @record = @post = @page = BlogRecord.find_by_slug!(params[:id])
