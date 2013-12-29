@@ -1,6 +1,5 @@
-class PostsController < ApplicationController
+class PostsController < BlogRecordsController
   skip_before_filter :authorize, only: [:index, :feed, :show]
-  before_filter :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.published.page(params[:page]).per(8)
@@ -15,45 +14,34 @@ class PostsController < ApplicationController
   end
 
   def show
-    redirect_to root_url unless @post.published? or admin?
-
     @comment = Comment.new
-    @meta_title = @post.title
+    @meta_title = @record.title
   end
 
   def new
-    @post = current_user.posts.build
+    @record = current_user.posts.build
     render layout: "editor"
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to edit_post_path(@post.slug)
+    @record = current_user.posts.build(post_params)
+    if @record.save
+      redirect_to edit_post_path(@record.slug)
     else
       render "new"
     end
   end
 
-  def edit
-    @image      = Image.new
-    @attachment = Attachment.new
-
-    @meta_title = @post.title
-
-    render layout: "editor"
-  end
-
   def update
-    if @post.update_attributes(post_params)
-      redirect_to edit_post_path(@post.slug)
+    if @record.update_attributes(post_params)
+      redirect_to edit_post_path(@record.slug)
     else
       render "edit"
     end
   end
 
   def destroy
-    @post.destroy
+    super
     redirect_to posts_path, notice: "Пост удалён."
   end
 
@@ -61,9 +49,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:raw_content, :tag_names, :title, :published, :published_at)
-  end
-
-  def find_post
-    @post = Post.find_by_slug!(params[:id])
   end
 end

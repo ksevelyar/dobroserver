@@ -1,52 +1,38 @@
-class PagesController < ApplicationController
+class PagesController < BlogRecordsController
   layout "clean"
 
   skip_before_filter :authorize, only: :show
 
   def show
-    @page = Page.find_by_slug!(params[:id])
-    redirect_to root_url unless @page.published? or admin?
+    redirect_to root_url unless @record.published? or admin?
 
-    @meta_title = @page.title
+    @meta_title = @record.title
   end
 
   def new
-    @page = Page.new
+    @record = Page.new
     render layout: "editor"
   end
 
   def create
-    @page = Page.new(page_params)
-    if @page.save
-      redirect_to edit_page_path(@page.slug)
+    @record = Page.new(page_params)
+    if @record.save
+      redirect_to edit_page_path(@record.slug)
     else
       render "new"
     end
   end
 
-  def edit
-    @page = @record = BlogRecord.find_by_slug!(params[:id])
-
-    @attachment = Attachment.new
-    @image = Image.new
-
-    @meta_title = @page.title
-
-    render layout: "editor"
-  end
-
   def update
-    @page = Page.find_by_slug!(params[:id])
-
-    if @page.update_attributes(page_params)
-      redirect_to edit_page_path(@page.slug)
+    if @record.update_attributes(page_params)
+      redirect_to edit_page_path(@record.slug)
     else
       render "edit"
     end
   end
 
   def destroy
-    Page.find_by_slug!(params[:id]).destroy
+    super
     redirect_to pages_path, notice: "Страница удалёна."
   end
 
