@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
   scope :recent, -> { order('created_at DESC') }
 
   before_save :sanitize_content
+  after_create :new_comment_notification
 
   def hot?
     (Time.zone.now - created_at) <= 30.minutes
@@ -28,5 +29,11 @@ class Comment < ActiveRecord::Base
       elements: ['a', 'div', 'p', 'br', 'code', 'pre', 'ul', 'ol', 'li', 'strong'],
       attributes: {'a' => ['href'], 'div' => ['class']},
       protocols: {'a' => {'href' => ['http', 'https', 'mailto']}})
+  end
+
+  def new_comment_notification
+    unless email == SETTINGS["mailer"]["to"]
+      NotificationsMailer.new_comment(self).deliver
+    end
   end
 end

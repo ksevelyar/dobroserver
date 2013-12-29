@@ -7,9 +7,6 @@ class CommentsController < ApplicationController
     comment.ip = request.headers["X-Real-IP"]
 
     if comment.save
-      unless comment.email == SETTINGS["mailer"]["to"]
-        NotificationsMailer.new_comment(comment).deliver
-      end
       # TODO комментарии через ajax или turbolinks
       # respond_to do |format|
       #   format.js
@@ -21,8 +18,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy if (comment.ip == request.headers["X-Real-IP"] and comment.hot?) or admin?
+    @comment = Comment.find(params[:id])
+    @comment.destroy if editable?
     redirect_to :back
   end
 
@@ -31,5 +28,10 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:name, :email, :content,
                                     :subject, :nickname)
+  end
+
+  # TODO подключить в интерфейсе
+  def editable?
+    (@comment.ip == request.headers["X-Real-IP"] and @comment.hot?) or admin?
   end
 end
