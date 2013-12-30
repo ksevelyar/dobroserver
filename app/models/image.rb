@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def preview?
-    File.exist?(image.preview.path)
+    File.exist?(image.preview.path.to_s)
   end
 
   def preview
