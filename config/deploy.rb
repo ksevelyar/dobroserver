@@ -3,7 +3,7 @@ set :application, "dobroserver"
 set :deploy_to,   "/data/projects/#{fetch :application}"
 set :rails_env, "production"
 
-set :linked_files, %w{config/database.yml config/config.yml}
+set :linked_files, %w{config/database.yml config/config.yml newrelic.yml}
 set :linked_dirs, %w{log tmp/pids tmp/sockets vendor/bundle public/uploads}
 
 

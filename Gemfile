@@ -29,10 +29,6 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
-# deliver 500 errors to email
-gem 'exception_notification'
-
-gem 'unicorn'
 
 group :development, :test do
   gem 'pry-rails'
@@ -54,3 +50,15 @@ group :test do
   gem 'coveralls', require: false
   gem 'simplecov', require: false
 end
+
+# Production
+# ----------
+
+# App server
+gem 'unicorn'
+
+# Mails 500 errors
+gem 'exception_notification'
+
+# New Relic
+gem 'newrelic_rpm'
