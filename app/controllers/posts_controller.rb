@@ -15,26 +15,26 @@ class PostsController < BlogRecordsController
 
   def show
     @comment = Comment.new
-    @meta_title = @record.title
+    @meta_title = @post.title
   end
 
   def new
-    @record = current_user.posts.build
+    @post = current_user.posts.build
     render layout: "editor"
   end
 
   def create
-    @record = current_user.posts.build(post_params)
-    if @record.save
-      redirect_to edit_post_path(@record.slug)
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to edit_post_path(@post.slug)
     else
       render "new"
     end
   end
 
   def update
-    if @record.update_attributes(post_params)
-      redirect_to edit_post_path(@record.slug)
+    if @post.update_attributes(post_params)
+      redirect_to edit_post_path(@post.slug)
     else
       render "edit"
     end
