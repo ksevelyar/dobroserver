@@ -3,7 +3,7 @@
 ## Requirements
 
 * Ruby >= 2.0.0
-* Imagemagick
+* ImageMagick
 
 ## Installation
 

@@ -1,13 +1,14 @@
 atom_feed language: "ru-RU" do |feed|
   feed.title SETTINGS["title"]
-  feed.updated @posts.first.updated_at unless @posts.empty?
+  feed.updated @posts.pluck(:published_at).first if @posts.any?
 
   @posts.each do |post|
-    next if post.updated_at.blank?
+    feed.entry(post,
+               published: post.published_at,
+               updated:   post.published_at) do |entry|
 
-    feed.entry(post) do |entry|
-      entry.url     post_url(post)
-      entry.title   post.title
+      entry.url       post_url(post)
+      entry.title     post.title
 
       if post.description?
         link = link_to "Читать дальше ›", post_url(post, anchor: "cut")
