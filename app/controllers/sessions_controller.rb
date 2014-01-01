@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:new, :create]
 
   def new
     redirect_to root_url if session[:remember_token].present?

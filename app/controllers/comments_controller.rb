@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_filter :authorize
+  skip_before_action :authorize
 
   def create
     post = Post.find_by_slug!(params[:post_id])

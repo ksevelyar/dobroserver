@@ -1,5 +1,5 @@
 class PostsController < BlogRecordsController
-  skip_before_filter :authorize, only: [:index, :feed, :show]
+  skip_before_action :authorize, only: [:index, :feed, :show]
 
   def index
     @posts = Post.published.page(params[:page]).per(8)

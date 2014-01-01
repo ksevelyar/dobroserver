@@ -1,6 +1,6 @@
 class BlogRecordsController < ApplicationController
-  before_filter :find_record, only: [:show, :edit, :update, :destroy]
-  before_filter :check_access, only: :show
+  before_action :find_record, only: [:show, :edit, :update, :destroy]
+  before_action :check_access, only: :show
 
   def edit
     @attachment = Attachment.new

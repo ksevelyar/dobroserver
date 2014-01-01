@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # TODO Продумать авторизацию
-  before_filter :authorize
+  before_action :authorize
 
   protected
 

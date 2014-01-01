@@ -1,7 +1,7 @@
 class PagesController < BlogRecordsController
   layout "clean"
 
-  skip_before_filter :authorize, only: :show
+  skip_before_action :authorize, only: :show
 
   def show
     redirect_to root_url unless @page.published? or admin?
