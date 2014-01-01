@@ -26,7 +26,7 @@ shared_examples "BlogRecord" do
       BlogRecordUploader.should_receive(:update_files_dir).
         with(blog_record.type, blog_record.slug, "new_title")
 
-      blog_record.update_attributes(title: "new_title")
+      blog_record.update(title: "new_title")
     end
   end
 

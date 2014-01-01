@@ -33,7 +33,7 @@ class PostsController < BlogRecordsController
   end
 
   def update
-    if @post.update_attributes(post_params)
+    if @post.update(post_params)
       redirect_to edit_post_path(@post.slug)
     else
       render "edit"

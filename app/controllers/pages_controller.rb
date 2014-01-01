@@ -24,7 +24,7 @@ class PagesController < BlogRecordsController
   end
 
   def update
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       redirect_to edit_page_path(@page.slug)
     else
       render "edit"
