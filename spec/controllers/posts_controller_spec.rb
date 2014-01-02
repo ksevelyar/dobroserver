@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe PostsController do
-  #render_views
-
   describe "guest access" do
     before :each do
       user = create(:user)
@@ -41,7 +39,7 @@ describe PostsController do
   describe "admin access" do
     before :each do
       @user = create(:user, admin: true)
-      session[:remember_token] = @user.remember_token
+      session[:user_id] = @user.id
 
       @post = create(:post, user: @user)
     end

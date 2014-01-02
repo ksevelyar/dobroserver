@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AttachmentsController do
   before :each do
     user = create(:user)
-    session[:remember_token] = user.remember_token
+    session[:user_id] = user.id
 
     @page = create(:page, user: user)
   end
