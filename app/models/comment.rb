@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
 
   # Antispam
   attr_accessor :subject, :nickname
-  validates :subject, :nickname, length: { is: 0 }
+  validates :subject, :nickname, absence: true
 
   # TODO exclusion registered users nicks
 

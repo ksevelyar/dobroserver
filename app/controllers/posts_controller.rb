@@ -6,7 +6,7 @@ class PostsController < BlogRecordsController
   end
 
   def feed
-    @posts = Post.published.limit(50)
+    @posts = Post.published.limit(30)
 
     respond_to do |format|
       format.atom
