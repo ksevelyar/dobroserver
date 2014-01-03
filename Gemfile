@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# ruby '2.1.0'
+
 gem 'rails', '~>4.0.2'
 gem 'pg'
 
@@ -38,6 +40,8 @@ group :development, :test do
 end
 
 group :development do
+  # only for :development, works faster than webrick
+  gem 'puma'
   gem 'spring'
 
   gem 'better_errors'
