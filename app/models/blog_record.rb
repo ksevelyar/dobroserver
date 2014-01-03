@@ -1,7 +1,7 @@
 class BlogRecord < ActiveRecord::Base
   include Slug
 
-  validates :title, :content, :slug, presence: true
+  validates :user_id, :title, :content, :slug, presence: true
   validates :title, :slug, uniqueness: { case_sensitive: false }
 
   belongs_to :user

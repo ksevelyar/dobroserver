@@ -2,10 +2,13 @@ require 'spec_helper'
 
 describe Post do
   it_behaves_like "BlogRecord"
-  let(:post) { create :post }
 
-  # OPTIMIZE Move to BlogRecord
-  # its(:slug) { should eq "testovyiy-zagolovok" }
+  it { should validate_presence_of :raw_content }
+
+  it { should have_many(:comments).dependent(:destroy) }
+  it { should have_and_belong_to_many(:tags) }
+
+  let(:post) { create :post }
 
   describe "#tag_names" do
     it "joins tag names to string" do

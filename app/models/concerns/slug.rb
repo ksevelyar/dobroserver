@@ -10,7 +10,8 @@ module Slug
   end
 
   def generate_slug
-    source = defined?(title) ? title : name
-    self.slug = Translit.slug(source)
+    if source = defined?(title) ? title : name
+      self.slug = Translit.slug(source)
+    end
   end
 end

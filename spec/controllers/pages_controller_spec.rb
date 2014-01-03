@@ -1,27 +1,12 @@
 require 'spec_helper'
 
 describe PagesController do
- #render_views
 
  describe "guest access" do
     before :each do
       user = create(:user)
       @page = create(:page, user: user)
     end
-
-    # describe "GET#index" do
-    #   it "renders the :index view" do
-    #     get :index
-    #     expect(response).to render_template :index
-    #   end
-    # end
-
-    # describe "GET#feed" do
-    #   it "renders the :feed view" do
-    #     get :feed, format: :atom
-    #     expect(response).to render_template :feed
-    #   end
-    # end
 
     describe "GET#show" do
       it "renders the :show view for published page" do
@@ -71,7 +56,7 @@ describe PagesController do
       end
     end
 
-    describe "page#create" do
+    describe "POST#create" do
       it "saves the valid page to database" do
         expect{
           post :create, page: attributes_for(:page)

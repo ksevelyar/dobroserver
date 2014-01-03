@@ -15,7 +15,7 @@ class PagesController < BlogRecordsController
   end
 
   def create
-    @page = Page.new(page_params)
+    @page = current_user.pages.build(page_params)
     if @page.save
       redirect_to edit_page_path(@page.slug)
     else

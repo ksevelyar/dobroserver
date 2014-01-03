@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   has_many :posts, dependent: :destroy
+  has_many :pages, dependent: :destroy
 
   before_save   { self.email.downcase! }
 

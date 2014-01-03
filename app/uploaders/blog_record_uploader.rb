@@ -12,7 +12,9 @@ class BlogRecordUploader < CarrierWave::Uploader::Base
     old_path = "#{Rails.root}/public/uploads/#{type.pluralize.underscore}/#{old_slug}"
     new_path = "#{Rails.root}/public/uploads/#{type.pluralize.underscore}/#{new_slug}"
 
-    FileUtils.mv(old_path, new_path) if FileTest.exists?(old_path)
+    if FileTest.exists?(old_path) and !FileTest.exists?(new_path)
+      FileUtils.mv(old_path, new_path)
+    end
   end
 
   def self.remove_files_dir type, slug

@@ -1,9 +1,8 @@
 class Post < BlogRecord
   attr_writer :raw_content, :tag_names
 
-  validates :user_id, :raw_content, :title, presence: true
+  validates :raw_content, presence: true
 
-  belongs_to :user
   has_many :comments, foreign_key: :blog_record_id, dependent: :destroy
   has_and_belongs_to_many :tags, -> { order(slug: :asc) }, foreign_key: :blog_record_id
 

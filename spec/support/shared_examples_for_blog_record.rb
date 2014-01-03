@@ -1,6 +1,21 @@
 require 'spec_helper'
 
 shared_examples "BlogRecord" do
+  it { should validate_presence_of :user_id }
+  it { should validate_presence_of :title }
+  it { should validate_presence_of :content }
+  it { should validate_presence_of :slug }
+
+  it do
+    create factory, title: "Уникальный заголовок"
+    should validate_uniqueness_of(:title)
+    should validate_uniqueness_of(:slug)
+  end
+
+  it { should belong_to(:user) }
+  it { should have_many(:images).dependent(:destroy) }
+  it { should have_many(:attachments).dependent(:destroy) }
+
   let(:factory) { described_class.to_s.underscore.to_sym }
 
   describe "#published?" do
