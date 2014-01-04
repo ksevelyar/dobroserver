@@ -15,7 +15,6 @@ class PostsController < BlogRecordsController
 
   def show
     @comment = Comment.new
-    @meta_title = @post.title
   end
 
   def new

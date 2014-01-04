@@ -2,8 +2,8 @@ doctype
 html
   head
     title
-      - if @meta_title
-        = "#{@meta_title} › #{SETTINGS['title']}"
+      - if yield(:title).present?
+        = "#{yield :title} › #{SETTINGS['title']}"
       - else
         = SETTINGS["title"]
 
@@ -24,4 +24,3 @@ html
           div class="alert alert-#{key}" =value
         = yield
     = render 'shared/footer'
-

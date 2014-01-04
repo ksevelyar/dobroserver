@@ -5,8 +5,6 @@ class PagesController < BlogRecordsController
 
   def show
     redirect_to root_url unless @page.published? or admin?
-
-    @meta_title = @page.title
   end
 
   def new

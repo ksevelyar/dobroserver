@@ -6,8 +6,6 @@ class BlogRecordsController < ApplicationController
     @attachment = Attachment.new
     @image = Image.new
 
-    @meta_title = @record.title
-
     render layout: "editor"
   end
 
