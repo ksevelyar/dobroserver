@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
   after_create :new_comment_notification
 
   def hot?
-    (Time.zone.now - created_at) <= 30.minutes
+    30.minutes.ago <= created_at
   end
 
   private
