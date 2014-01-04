@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       # respond_to do |format|
       #   format.js
       # end
-      redirect_to :back
+      redirect_to post_path(post, anchor: "comments")
     else
       redirect_to :back
     end
