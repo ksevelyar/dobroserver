@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204193227) do
+ActiveRecord::Schema.define(version: 20140104065816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20131204193227) do
     t.string  "attachment"
     t.integer "blog_record_id"
   end
+
+  add_index "attachments", ["blog_record_id"], name: "index_attachments_on_blog_record_id", using: :btree
 
   create_table "blog_records", force: true do |t|
     t.string   "type"
@@ -34,15 +36,15 @@ ActiveRecord::Schema.define(version: 20131204193227) do
     t.datetime "updated_at"
   end
 
+  add_index "blog_records", ["published_at"], name: "index_blog_records_on_published_at", using: :btree
   add_index "blog_records", ["slug"], name: "index_blog_records_on_slug", unique: true, using: :btree
-  add_index "blog_records", ["type"], name: "index_blog_records_on_type", using: :btree
 
   create_table "blog_records_tags", id: false, force: true do |t|
     t.integer "blog_record_id"
     t.integer "tag_id"
   end
 
-  add_index "blog_records_tags", ["blog_record_id"], name: "index_blog_records_tags_on_blog_record_id", using: :btree
+  add_index "blog_records_tags", ["blog_record_id", "tag_id"], name: "index_blog_records_tags_on_blog_record_id_and_tag_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "name"
@@ -54,10 +56,14 @@ ActiveRecord::Schema.define(version: 20131204193227) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["blog_record_id"], name: "index_comments_on_blog_record_id", using: :btree
+
   create_table "images", force: true do |t|
     t.string  "image"
     t.integer "blog_record_id"
   end
+
+  add_index "images", ["blog_record_id"], name: "index_images_on_blog_record_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"

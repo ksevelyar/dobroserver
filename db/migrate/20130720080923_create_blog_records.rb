@@ -13,6 +13,6 @@ class CreateBlogRecords < ActiveRecord::Migration
       t.timestamps
     end
     add_index :blog_records, :slug, unique: true
-    add_index :blog_records, :type
+    add_index :blog_records, :published_at
   end
 end

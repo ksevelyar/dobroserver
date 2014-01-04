@@ -5,4 +5,5 @@ class CreateAttachments < ActiveRecord::Migration
       t.integer :blog_record_id
     end
   end
+  add_index :attachments, :blog_record_id
 end
