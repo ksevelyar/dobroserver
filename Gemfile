@@ -40,6 +40,9 @@ group :development, :test do
 end
 
 group :development do
+  # show n+1 queries
+  gem "bullet"
+
   # only for :development, works faster than webrick
   gem 'puma'
   gem 'spring'

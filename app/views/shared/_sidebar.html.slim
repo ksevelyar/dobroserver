@@ -14,7 +14,7 @@ aside
   - if Comment.any?
     h2 Новые комментарии
     ul
-      - Comment.recent.limit(8).each do |comment|
+      - Comment.recent.includes(:post).limit(8).each do |comment|
         li
           = comment.name
           |  › #{link_to comment.post.title, post_path(comment.post, anchor: 'comments')}
