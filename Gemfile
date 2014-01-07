@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # ruby '2.1.0'
 
-gem 'rails', '~>4.0.2'
+gem 'rails', '~> 4.0.2'
 gem 'pg'
 
 gem 'sass-rails'
@@ -23,19 +23,22 @@ gem 'mini_magick'
 
 gem 'jbuilder'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+# group :doc do
+#   # bundle exec rake doc:rails generates the API under doc/api.
+#   gem 'sdoc', require: false
+# end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
-gem 'pry-rails'
-
 group :development, :test do
+  gem 'pry-rails'
+
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do
@@ -51,12 +54,11 @@ group :development do
 
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm', ">=0.1.0", require: false
+  gem 'capistrano-rvm', ">= 0.1.0", require: false
 end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'capybara'
 
   gem 'coveralls', require: false
   gem 'simplecov', require: false
