@@ -39,8 +39,9 @@ group :development, :test do
 end
 
 group :development do
-  # show n+1 queries
+  # show slow queries
   gem "bullet"
+  gem 'rack-mini-profiler'
 
   # only for :development, works faster than webrick
   gem 'puma'
