@@ -41,7 +41,6 @@ end
 group :development do
   # show slow queries
   gem "bullet"
-  gem 'rack-mini-profiler'
 
   # only for :development, works faster than webrick
   gem 'puma'
