@@ -4,3 +4,5 @@ Disallow: /admin
 Disallow: */feed
 
 Host: dobroserver.ru
+
+Sitemap: http://dobroserver.ru/sitemap.xml.gz

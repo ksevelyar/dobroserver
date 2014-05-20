@@ -20,6 +20,9 @@
 /public/uploads
 /public/assets
 
+# Ignore sitemap
+/public/sitemap.xml.gz
+
 # Settings
 /config/database.yml
 /config/config.yml

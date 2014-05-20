@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 # ruby '2.1.0'
 
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 4.1'
 gem 'pg'
 
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier'
 gem 'coffee-rails'
 
@@ -22,6 +22,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'jbuilder'
+gem 'sitemap_generator'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

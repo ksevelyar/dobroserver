@@ -18,7 +18,7 @@ set :stage, :production
 
 set :rvm_type, :system
 
-server '192.168.0.1', user: 'ksevelyar', roles: %w{web app db}
+server 'dobroserver.ru', user: 'ksevelyar', roles: %w{web app db}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -43,3 +43,7 @@ server '192.168.0.1', user: 'ksevelyar', roles: %w{web app db}
 # setting per server overrides global ssh_options
 
 # fetch(:default_env).merge!(rails_env: :production)
+
+namespace :deploy do
+  after :publishing, "deploy:sitemap:refresh"
+end
