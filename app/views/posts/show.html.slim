@@ -1,31 +1,44 @@
 - content_for :title, @post.title
 
-aside
-  .tags.show
-    - @post.tags.each do |tag|
-      = link_to tag.name, tag
-  time= @post.published_at.strftime('%d.%m.%y в %H:%M')
+div itemscope="true" itemtype="http://schema.org/Article"
+  aside
+    .tags.show
+      - @post.tags.each do |tag|
+        = link_to tag.name, tag
+    time= @post.published_at.strftime('%d.%m.%y в %H:%M')
 
-article
-  h1= @post.title
-  - if @post.description
-    = space @post.description
-    div#cut
-  = space @post.content
+  article
+    meta itemprop="inLanguage" content="ru"
+    meta itemprop="datePublished" content=@post.published_at.to_date.strftime
+    meta itemprop="keywords" content=@post.tag_names
 
-/ OPTIMIZE переписать этот ужас
-#comments
-  - if @post.comments.any?
-    h2 Комментарии
-    - x = 0
-    - @post.comments.all.each do |comment|
-      .comment id="comment-#{x += 1}"
-        .clearfix
-          .number= link_to "##{x}", post_path(@post, anchor: "comment-#{x}")
-          = gravatar_for comment.email
-          cite= comment.name
-          br
-          time= comment.created_at.strftime('%d.%m.%y в %H:%M')
-        div= space comment.content
+    - if @post.images.present?
+      meta itemprop="image" content=@post.images.first.image.url
 
-= render 'comments/form'
+    h1 itemprop="name"
+      = @post.title
+
+    section itemprop="articleBody"
+      - if @post.description
+        = space @post.description
+        div#cut
+
+      = space @post.content
+
+  / OPTIMIZE переписать этот ужас
+  #comments
+    - if @post.comments.any?
+
+      h2 Комментарии
+      - x = 0
+      - @post.comments.all.each do |comment|
+        .comment id="comment-#{x += 1}" itemprop="comment"
+          .clearfix
+            .number= link_to "##{x}", post_path(@post, anchor: "comment-#{x}")
+            = gravatar_for comment.email
+            cite= comment.name
+            br
+            time= comment.created_at.strftime('%d.%m.%y в %H:%M')
+          div= space comment.content
+
+  = render 'comments/form'
