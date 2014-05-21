@@ -21,7 +21,7 @@ SitemapGenerator::Sitemap.create do
   #
   # Add all articles:
   #
-  Post.find_each do |article|
+  Post.published.find_each do |article|
     add post_path(article), lastmod: article.updated_at
   end
 end
