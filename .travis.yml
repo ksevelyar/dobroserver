@@ -11,4 +11,4 @@ script: bundle exec rspec spec
 matrix:
   allow_failures:
     - env: "RAILS_VERSION=master"
-    - rvm: 2.1.0
+    - rvm: 2.0.0
