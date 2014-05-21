@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.1'
 gem 'pg'
 
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '>= 4'
 gem 'uglifier'
 gem 'coffee-rails'
 

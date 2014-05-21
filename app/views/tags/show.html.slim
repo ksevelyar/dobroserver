@@ -1,3 +1,5 @@
+- content_for :title, @tag.name
+
 h1= @tag.name
 - @posts.each do |post|
   h2= link_to post.title, post
