@@ -7,8 +7,3 @@ before_script:
   - bundle exec rake setup:development
 
 script: bundle exec rspec spec
-
-matrix:
-  allow_failures:
-    - env: "RAILS_VERSION=master"
-    - rvm: 2.0.0
