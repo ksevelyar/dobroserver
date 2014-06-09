@@ -10,6 +10,7 @@ shared_examples "BlogRecordUploader" do
 
   describe ".update_files_dir" do
     it "renames slug directory" do
+      pending
       FileUtils.mkdir_p old_path
       described_class.update_files_dir "Post", "old_slug", "new_slug"
 
