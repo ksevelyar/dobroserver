@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe CommentsController, :type => :controller do
   before :each do
     user = create(:user)
     @post = create(:post, user: user)

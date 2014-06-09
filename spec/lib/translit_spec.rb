@@ -6,13 +6,13 @@ describe Translit do
     title = "Съешь ещё этих мягких французских булок, да выпей чаю"
     slug  = "sesh-eschyo-etih-myagkih-frantsuzskih-bulok-da-vyipey-chayu"
 
-    described_class.slug(title).should eq slug
+    expect(described_class.slug(title)).to eq slug
   end
 
   it "returns valid slug for english title" do
     title = "Quick fox jumps nightly above wizard"
     slug  = "quick-fox-jumps-nightly-above-wizard"
 
-    described_class.slug(title).should eq slug
+    expect(described_class.slug(title)).to eq slug
   end
 end

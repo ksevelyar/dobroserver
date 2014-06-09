@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TagsController do
+describe TagsController, :type => :controller do
   render_views
 
   describe "GET 'show'" do
@@ -8,8 +8,8 @@ describe TagsController do
       tag = create :tag
       get :show, id: tag.slug
 
-      response.should be_success
-      response.should render_template :show
+      expect(response).to be_success
+      expect(response).to render_template :show
     end
   end
 end

@@ -7,7 +7,7 @@ describe ImageUploader do
     post = create(:post)
     image = create(:image, blog_record_id: post.id)
 
-    image.image.versions[:preview].should be_present
+    expect(image.image.versions[:preview]).to be_present
 
     FileUtils.rm_rf "#{Rails.root}/public/uploads/posts/#{post.slug}"
   end

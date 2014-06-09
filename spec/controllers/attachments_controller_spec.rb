@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AttachmentsController do
+describe AttachmentsController, :type => :controller do
   before :each do
     user = create(:user)
     session[:user_id] = user.id

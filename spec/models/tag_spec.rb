@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Tag do
+describe Tag, :type => :model do
   describe "#count" do
     it "returns published posts count for tag" do
       create :post, published: false, tag_names: "test"
       create :post, title: "post_2",  tag_names: "test"
       create :post, title: "post_3",  tag_names: "test"
 
-      Tag.last.count.should eq 2
+      expect(Tag.last.count).to eq 2
     end
   end
 
@@ -19,9 +19,9 @@ describe Tag do
       tag4 = double(name: "Tag4", slug: "tag4", count: 10)
       tag5 = double(name: "Tag5", slug: "tag5", count: 15)
 
-      described_class.should_receive(:published).and_return([tag1, tag2, tag3, tag4, tag5])
+      expect(described_class).to receive(:published).and_return([tag1, tag2, tag3, tag4, tag5])
 
-      described_class.cloud.should eq [["Tag1", "tag1", 1],
+      expect(described_class.cloud).to eq [["Tag1", "tag1", 1],
                                        ["Tag2", "tag2", 2],
                                        ["Tag3", "tag3", 1],
                                        ["Tag4", "tag4", 3],

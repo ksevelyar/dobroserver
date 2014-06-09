@@ -13,8 +13,8 @@ shared_examples "BlogRecordUploader" do
       FileUtils.mkdir_p old_path
       described_class.update_files_dir "Post", "old_slug", "new_slug"
 
-      FileTest.exists?(old_path).should be_false
-      FileTest.exists?(new_path).should be_true
+      expect(FileTest.exists?(old_path)).to be_falsey
+      expect(FileTest.exists?(new_path)).to be_truthy
     end
   end
 
@@ -23,7 +23,7 @@ shared_examples "BlogRecordUploader" do
       FileUtils.mkdir_p old_path
       described_class.remove_files_dir "Post", "old_slug"
 
-      FileTest.exists?(old_path).should be_false
+      expect(FileTest.exists?(old_path)).to be_falsey
     end
   end
 end

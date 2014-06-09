@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ImagesController do
+describe ImagesController, :type => :controller do
   before :each do
     user = create(:user)
     session[:user_id] = user.id
