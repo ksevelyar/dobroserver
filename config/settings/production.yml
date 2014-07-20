@@ -1,4 +1,4 @@
-production:
+main:
   secret_key_base: "rake secret"
   domain: dobroserver.ru
   title: Dobroserver
