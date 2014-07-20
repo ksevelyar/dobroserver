@@ -78,13 +78,13 @@ Dobroserver::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = { host: SETTINGS["domain"] }
+  config.action_mailer.default_url_options = { host: Settings.main.domain }
 
   config.middleware.use ExceptionNotification::Rack,
     email: {
     email_prefix: "[dobroserver][error] ",
-    sender_address: SETTINGS["mailer"]["from"],
-    exception_recipients: SETTINGS["mailer"]["to"],
+    sender_address: Settings.mailer.from,
+    exception_recipients: Settings.mailer.to,
     email_format: :html
   }
 end

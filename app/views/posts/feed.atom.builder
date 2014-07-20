@@ -1,5 +1,5 @@
 atom_feed language: "ru-RU" do |feed|
-  feed.title SETTINGS["title"]
+  feed.title Settings.main.title
   feed.updated @posts.pluck(:published_at).first if @posts.any?
 
   @posts.each do |post|

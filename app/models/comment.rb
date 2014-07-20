@@ -32,7 +32,7 @@ class Comment < ActiveRecord::Base
   end
 
   def new_comment_notification
-    unless email == SETTINGS["mailer"]["to"]
+    unless email == Settings.mailer.to
       NotificationsMailer.new_comment(self).deliver
     end
   end

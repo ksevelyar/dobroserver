@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Dobroserver::Application.config.secret_key_base = SETTINGS["secret_key_base"]
+Dobroserver::Application.config.secret_key_base = Settings.main.secret_key_base

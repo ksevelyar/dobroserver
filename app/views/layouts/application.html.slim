@@ -3,10 +3,9 @@ html
   head
     title
       - if yield(:title).present?
-        = "#{yield :title} › #{SETTINGS['title']}"
+        = "#{yield :title} › #{Settings.main.title}"
       - else
-        = SETTINGS["title"]
-
+        = Settings.main.title
 
     = csrf_meta_tags
 

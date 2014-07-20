@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://dobroserver.ru"
+SitemapGenerator::Sitemap.default_host = Settings.main.domain
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -21,7 +21,11 @@ SitemapGenerator::Sitemap.create do
   #
   # Add all articles:
   #
-  Post.published.find_each do |article|
-    add post_path(article), lastmod: article.updated_at
+  Post.published.find_each do |post|
+    add post_path(post), lastmod: post.updated_at
+  end
+
+  Page.published.find_each do |page|
+    add post_path(page), lastmod: page.updated_at
   end
 end

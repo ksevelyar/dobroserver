@@ -1,8 +1,8 @@
 class NotificationsMailer < ActionMailer::Base
   helper :application
 
-  default from: SETTINGS["mailer"]["from"]
-  default to:   SETTINGS["mailer"]["to"]
+  default from: Settings.mailer.from
+  default to:   Settings.mailer.to
 
   def new_message message
     @message = message

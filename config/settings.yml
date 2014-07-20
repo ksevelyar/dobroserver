@@ -1,0 +1,8 @@
+main:
+  secret_key_base: "rake secret"
+  domain: localhost:2000
+  title: Dobroserver [dev]
+
+mailer:
+  from: "notifications_fairy@dobroserver.ru"
+  to:   "ksevelyar@dobroserver.ru"

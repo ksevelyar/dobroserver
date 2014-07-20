@@ -2,7 +2,7 @@ class PostsController < BlogRecordsController
   skip_before_action :authorize, only: [:index, :feed, :show]
 
   def index
-    @posts = Post.published.page(params[:page]).per(8)
+    @posts = Post.published.includes(:comments).page(params[:page]).per(8)
   end
 
   def feed
