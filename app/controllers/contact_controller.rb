@@ -1,6 +1,5 @@
 class ContactController < ApplicationController
   skip_before_action :authorize
-
   layout "clean"
 
   def new
@@ -13,9 +12,9 @@ class ContactController < ApplicationController
 
     if @message.valid?
       NotificationsMailer.new_message(@message).deliver
-      redirect_to(root_path, notice: "Сообщение отправлено.")
+      redirect_to root_path, notice: "Сообщение отправлено."
     else
-      flash.now.alert = "Заполните все поля."
+      flash.now.alert = @message.errors.full_messages.to_sentence
       render :new
     end
   end

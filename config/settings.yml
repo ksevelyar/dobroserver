@@ -4,5 +4,5 @@ main:
   title: Dobroserver [dev]
 
 mailer:
-  from: "notifications_fairy@dobroserver.ru"
+  from: "'Notifications Fairy' <notifications_fairy@dobroserver.ru>"
   to:   "ksevelyar@dobroserver.ru"

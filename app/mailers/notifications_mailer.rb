@@ -6,11 +6,11 @@ class NotificationsMailer < ActionMailer::Base
 
   def new_message message
     @message = message
-    mail(subject: message.subject)
+    mail subject: message.subject, reply_to: message.email
   end
 
   def new_comment comment
     @comment = comment
-    mail(subject: "Новый комментарий")
+    mail subject: "Новый комментарий"
   end
 end
