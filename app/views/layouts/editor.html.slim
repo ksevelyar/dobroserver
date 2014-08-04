@@ -1,11 +1,7 @@
 doctype
 html
   head
-    title
-      - if yield(:title).present?
-        = "#{yield :title} › #{Settings.main.title}"
-      - else
-        = Settings.main.title
+    title= head_title
 
     = csrf_meta_tags
 

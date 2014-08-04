@@ -1,16 +1,12 @@
 doctype
 html
   head
-    title
-      - if yield(:title).present?
-        = "#{yield :title} › #{Settings.main.title}"
-      - else
-        = Settings.main.title
+    title= head_title
 
     = csrf_meta_tags
 
-    = stylesheet_link_tag    "application_global", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application_global", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application_global", media: "all"
+    = javascript_include_tag "application_global"
 
     = favicon_link_tag "/favicon.png"
     = auto_discovery_link_tag :atom, "/feed"

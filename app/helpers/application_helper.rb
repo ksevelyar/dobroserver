@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # TODO l18n
   def text_date date
     (date || Time.zone.now).strftime('%Y.%m.%d %H:%M')
   end
@@ -21,5 +22,13 @@ module ApplicationHelper
       space_after_headers: true
     }
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
+  end
+
+  def head_title
+    if content_for(:title).present?
+      "#{content_for :title} › #{Settings.main.title}"
+    else
+      Settings.main.title
+    end
   end
 end
