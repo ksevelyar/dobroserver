@@ -57,3 +57,5 @@ server {
     proxy_temp_file_write_size 64k;
   }
 }
+
+# vim: set syntax=nginx:
