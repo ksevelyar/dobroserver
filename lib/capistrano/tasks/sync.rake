@@ -36,5 +36,3 @@ namespace :sync do
   task :uploads do
   end
 end
-
-# vim: set syntax=ruby:
