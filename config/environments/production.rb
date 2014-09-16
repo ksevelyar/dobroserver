@@ -81,7 +81,7 @@ Dobroserver::Application.configure do
   config.action_mailer.default_url_options = { host: Settings.main.domain }
 
   config.middleware.use ExceptionNotification::Rack,
-    ignore_exceptions: ['ActionController::InvalidAuthenticityToken'] + ExceptionNotifier.ignored_exceptions,
+    ignore_exceptions: ['ActionController::InvalidAuthenticityToken', 'ActionController::BadRequest'] + ExceptionNotifier.ignored_exceptions,
     email: {
     email_prefix: "[dobroserver][error] ",
     sender_address: Settings.mailer.from,
