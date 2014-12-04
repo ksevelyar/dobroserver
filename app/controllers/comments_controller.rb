@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_action :authorize
+  # skip_before_action :authorize
 
   def create
     post = Post.find_by_slug!(params[:post_id])
@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     comment.ip = request.headers["X-Real-IP"]
 
     if comment.save
-      # TODO комментарии через ajax или turbolinks
+      # TODO комментарии через ajax
       # respond_to do |format|
       #   format.js
       # end

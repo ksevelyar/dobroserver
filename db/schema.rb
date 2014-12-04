@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130927194205) do
+ActiveRecord::Schema.define(version: 20141118113614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_users", force: true do |t|
+    t.string   "name"
+    t.string   "email",               default: "", null: false
+    t.string   "encrypted_password",  default: "", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
 
   create_table "attachments", force: true do |t|
     t.string  "attachment"
@@ -30,7 +41,7 @@ ActiveRecord::Schema.define(version: 20130927194205) do
     t.string   "title"
     t.boolean  "published"
     t.datetime "published_at"
-    t.integer  "user_id"
+    t.integer  "admin_user_id"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,17 +84,5 @@ ActiveRecord::Schema.define(version: 20130927194205) do
   end
 
   add_index "tags", ["slug"], name: "index_tags_on_slug", unique: true, using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "remember_token"
-    t.boolean  "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

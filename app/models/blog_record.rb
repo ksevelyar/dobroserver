@@ -4,12 +4,13 @@ class BlogRecord < ActiveRecord::Base
   validates :user_id, :title, :content, :slug, presence: true
   validates :title, :slug, uniqueness: { case_sensitive: false }
 
-  belongs_to :user
+  belongs_to :admin_user
   has_many :images, dependent: :destroy
   has_many :attachments, dependent: :destroy
 
   scope :recent, -> { order('published_at DESC') }
   scope :published, -> { recent.where('published IS TRUE AND published_at <= ?', Time.zone.now) }
+  scope :draft, -> { where('published IS FALSE') }
 
   def published?
     published == true and published_at <= Time.zone.now

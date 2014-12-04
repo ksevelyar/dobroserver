@@ -33,4 +33,8 @@ class Tag < ActiveRecord::Base
       Tag.find_or_create_by(name: name)
     end
   end
+
+  def to_s
+    name
+  end
 end

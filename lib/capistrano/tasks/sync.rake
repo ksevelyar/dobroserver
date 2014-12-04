@@ -9,6 +9,7 @@ namespace :sync do
 
       execute "PGPASSWORD='#{production_db['password']}' && export PGPASSWORD && \
                pg_dump -Fc --compress=9 \
+               --clean \
                --username=#{production_db['username']} \
                --host localhost \
                --file=#{current_path}/tmp/#{dump} \

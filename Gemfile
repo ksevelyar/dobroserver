@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-# ruby '2.1.0'
-
 gem 'rails', '~> 4.1'
 gem 'pg'
 
@@ -36,6 +34,10 @@ gem 'exception_notification'
 
 # New Relic
 gem 'newrelic_rpm'
+
+# Admin
+gem 'devise'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :development, :test do
   gem 'rspec-rails'
