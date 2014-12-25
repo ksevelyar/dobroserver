@@ -19,7 +19,6 @@ rake setup:development
 
 ```
 cp config/database.yml{.example,}
-cp config/config.yml{.example,}
 ```
 
 ```

@@ -19,6 +19,5 @@ namespace :setup do
     config_dir = File.expand_path("../../config", File.dirname(__FILE__))
 
     FileUtils.cp "#{config_dir}/database.yml.example", "#{config_dir}/database.yml"
-    FileUtils.cp "#{config_dir}/config.yml.example",   "#{config_dir}/config.yml"
   end
 end
