@@ -1,11 +1,11 @@
 if Rails.env.development?
-  User.create(name: "admin",
+  user = User.create(name: "admin",
               email: "admin@domain.tld",
               password: "password",
               password_confirmation: "password",
               admin: true)
 
-  post = Post.create(raw_content: "description #cut article",
+  post = user.posts.create(raw_content: "description #cut article",
               title: "Тестовый пост",
               published_at: Time.now,
               published: true)
