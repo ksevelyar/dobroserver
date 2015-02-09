@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20130927194205) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attachments", force: true do |t|
+  create_table "attachments", force: :cascade do |t|
     t.string  "attachment"
     t.integer "blog_record_id"
   end
 
   add_index "attachments", ["blog_record_id"], name: "index_attachments_on_blog_record_id", using: :btree
 
-  create_table "blog_records", force: true do |t|
+  create_table "blog_records", force: :cascade do |t|
     t.string   "type"
     t.text     "content"
     t.text     "description"
@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 20130927194205) do
   add_index "blog_records", ["published_at"], name: "index_blog_records_on_published_at", using: :btree
   add_index "blog_records", ["slug"], name: "index_blog_records_on_slug", unique: true, using: :btree
 
-  create_table "blog_records_tags", id: false, force: true do |t|
+  create_table "blog_records_tags", id: false, force: :cascade do |t|
     t.integer "blog_record_id"
     t.integer "tag_id"
   end
 
   add_index "blog_records_tags", ["blog_record_id", "tag_id"], name: "index_blog_records_tags_on_blog_record_id_and_tag_id", using: :btree
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.text     "content"
@@ -58,14 +58,14 @@ ActiveRecord::Schema.define(version: 20130927194205) do
 
   add_index "comments", ["blog_record_id"], name: "index_comments_on_blog_record_id", using: :btree
 
-  create_table "images", force: true do |t|
+  create_table "images", force: :cascade do |t|
     t.string  "image"
     t.integer "blog_record_id"
   end
 
   add_index "images", ["blog_record_id"], name: "index_images_on_blog_record_id", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20130927194205) do
 
   add_index "tags", ["slug"], name: "index_tags_on_slug", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"

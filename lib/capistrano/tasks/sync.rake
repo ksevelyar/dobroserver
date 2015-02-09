@@ -16,7 +16,6 @@ namespace :sync do
                unset PGPASSWORD"
 
 
-
       download! "#{current_path}/tmp/#{dump}", "tmp/"
       execute "rm -f #{current_path}/tmp/#{dump}"
 
@@ -34,5 +33,6 @@ namespace :sync do
   end
 
   task :uploads do
+    system "rsync -avz --copy-dirlinks 192.168.0.1:/data/projects/dobroserver/current/public /data/projects/dobroserver/"
   end
 end

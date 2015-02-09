@@ -17,8 +17,10 @@ describe Comment, :type => :model do
 
   describe "#hot" do
     it "returns true for new comments" do
+
       post = create :post
       comment = create :comment, post: post
+
 
       expect(comment.hot?).to be_truthy
     end
