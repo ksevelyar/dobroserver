@@ -27,6 +27,7 @@ set :keep_releases, 7
 # Tasks
 namespace :deploy do
   after :finishing, "deploy:cleanup"
+  after 'deploy:publishing', 'deploy:restart'
 
   desc 'Restart application'
   task :restart do
