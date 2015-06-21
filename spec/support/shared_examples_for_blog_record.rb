@@ -38,20 +38,24 @@ shared_examples "BlogRecord" do
   describe "#update_files_dir" do
     it "updates file directory after update" do
       blog_record = create factory
-      expect(BlogRecordUploader).to receive(:update_files_dir).
-        with(blog_record.type, blog_record.slug, "new_title")
+      image_path = blog_record.images.first.image.path
 
       blog_record.update(title: "new_title")
+      new_image_path = blog_record.images.first.image.path
+
+      expect(image_path != new_image_path).to be_truthy
+      expect(FileTest.exists?(image_path)).to be_falsey
+      expect(FileTest.exists?(new_image_path)).to be_truthy
     end
   end
 
   describe "#remove_files_dir" do
     it "removes file directory after destroy" do
       blog_record = create factory
-      expect(BlogRecordUploader).to receive(:remove_files_dir).
-        with(blog_record.type, blog_record.slug)
+      image_path = blog_record.images.first.image.path
 
       blog_record.destroy
+      expect(FileTest.exists?(image_path)).to be_falsey
     end
   end
 end

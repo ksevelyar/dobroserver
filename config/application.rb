@@ -27,6 +27,8 @@ module Dobroserver
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.active_record.raise_in_transactional_callbacks = true
+
     config.generators do |g|
       g.assets false
       g.helper false

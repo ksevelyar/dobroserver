@@ -21,9 +21,8 @@ class BlogRecord < ActiveRecord::Base
   private
 
   def update_files_dir
-    if slug_changed?
-      BlogRecordUploader.update_files_dir type, slug_was, slug
-    end
+    return unless slug_changed?
+    BlogRecordUploader.update_files_dir type, slug_was, slug
   end
 
   def remove_files_dir

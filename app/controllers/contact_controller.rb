@@ -11,7 +11,7 @@ class ContactController < ApplicationController
     @message = Message.new(params[:message])
 
     if @message.valid?
-      NotificationsMailer.new_message(@message).deliver
+      NotificationsMailer.new_message(@message).deliver_now
       redirect_to root_path, notice: "Сообщение отправлено."
     else
       flash.now.alert = @message.errors.full_messages.to_sentence
