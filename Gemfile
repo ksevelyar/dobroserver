@@ -4,6 +4,8 @@ gem 'rails', '~> 4.2'
 gem 'pg'
 
 gem 'sass-rails', '>= 4'
+gem 'bootstrap-sass'
+
 gem 'uglifier'
 gem 'coffee-rails'
 

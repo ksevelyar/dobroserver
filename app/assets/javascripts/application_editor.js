@@ -11,3 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_tree ./editor
+//= require jquery
+//= require bootstrap-sprockets
