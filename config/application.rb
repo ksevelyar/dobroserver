@@ -36,6 +36,7 @@ module Dobroserver
       g.view_specs false
       g.routing_specs false
       g.request_specs false
+      g.skip_routes  true
     end
   end
 end
