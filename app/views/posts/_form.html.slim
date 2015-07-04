@@ -1,6 +1,6 @@
 = render "shared/form_errors", object: @post
 
-= form_for @post, remote: @post.persisted?, html: { class: "space" } do |f|
+= form_for @post, html: { class: "space" } do |f|
   .clearfix
     = f.text_field :title, class: "left"
     = link_to @post.title, @post if @post.title
