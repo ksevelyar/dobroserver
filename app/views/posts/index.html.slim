@@ -1,6 +1,6 @@
 - @posts.includes(:tags).each do |post|
-  .row
-    section.teaser.small-12.columns
+  .section.teaser.row
+    .small-12.columns
       h2 = link_to post.title, post
 
       - if post.description
@@ -16,10 +16,10 @@
 
         .small-4.columns
           - if post.description
-            .right.more
+            .more
               = link_to "Читать дальше ›", post_path(post, anchor: "cut")
           - if post.comments.any?
-            .right.comments
+            .comments
               = link_to post.comments.count, post_path(post, anchor: "comments")
 
 
