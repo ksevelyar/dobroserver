@@ -1,6 +1,4 @@
 class PagesController < BlogRecordsController
-  layout "clean"
-
   skip_before_action :authorize, only: :show
 
   def show

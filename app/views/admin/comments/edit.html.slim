@@ -1,0 +1,28 @@
+#comments_form.row
+  .small-12.large-8.columns
+    h2 Добавить комментарий
+    = form_for [:admin, @comment] do |f|
+
+      .row
+        .small-6.columns
+          label
+            | Имя или псевдоним
+            = f.text_field :name
+        .small-6.columns
+          label
+            | Почта
+            = f.email_field :email
+
+      .row
+        .small-12.columns
+          label
+            | Комментарий
+            = f.text_area :content, rows: 5
+
+          .spam
+            = f.text_field :subject
+            = f.text_field :nickname
+
+      .row
+        .small-12.columns
+          = f.submit "Отправить", class: 'button tiny expand'

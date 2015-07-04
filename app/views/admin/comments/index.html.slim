@@ -1,0 +1,15 @@
+table
+  /thead
+    tr
+      th Автор
+      th Комментарий
+      th Редактировать
+      th Удалить
+  tbody
+    - @comments.each do |comment|
+      tr
+        td = comment.name
+        td = truncate comment.content
+        td = link_to "Редактировать", edit_admin_comment_path(comment)
+        td = link_to "Удалить", [:admin, comment], method: :delete, data: { confirm: 'Удалить?' }
+

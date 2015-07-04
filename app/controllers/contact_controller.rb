@@ -1,6 +1,5 @@
 class ContactController < ApplicationController
   skip_before_action :authorize
-  layout "clean"
 
   def new
     @message = Message.new

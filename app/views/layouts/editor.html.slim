@@ -5,16 +5,17 @@ html
 
     = csrf_meta_tags
 
-    = stylesheet_link_tag    "application_global", media: "all"
+    = stylesheet_link_tag    "application", media: "all"
     = stylesheet_link_tag    "application_editor", media: "all"
 
-    = javascript_include_tag "application_global"
+    = javascript_include_tag "application"
     = javascript_include_tag "application_editor"
 
     link rel="icon" href="/favicon.png"
 
-  body
+  body.site
     = render 'shared/header'
-    .wrapper
-      = yield
+    .row.site-content
+      .small-12.columns
+        = yield
     = render 'shared/footer'
