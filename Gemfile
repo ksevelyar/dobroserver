@@ -6,6 +6,7 @@ gem 'pg'
 gem 'sass-rails', '>= 4'
 gem 'uglifier'
 gem 'coffee-rails'
+gem 'foundation-rails'
 
 gem 'jquery-rails'
 gem 'slim-rails'
@@ -14,12 +15,13 @@ gem 'kaminari'
 gem 'sanitize'
 gem 'redcarpet'
 
-gem "rails_config"
+gem 'rails_config'
 gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'jbuilder'
 gem 'sitemap_generator'
+gem 'draper'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
@@ -42,7 +44,7 @@ end
 
 group :development do
   # show slow queries
-  gem "bullet"
+  gem 'bullet'
 
   # only for :development, works faster than webrick
   gem 'puma'
@@ -55,7 +57,7 @@ group :development do
 
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm', ">=0.1.0", require: false
+  gem 'capistrano-rvm', '>=0.1.0', require: false
 end
 
 group :test do

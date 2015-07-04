@@ -1,0 +1,282 @@
+//// Global
+
+// fonts
+@font-face
+  font-family: Open Sans
+  src: local('Open Sans'), local('OpenSans'), url('/fonts/OpenSans-Regular.ttf')
+
+@font-face
+  font-family: Open Sans
+  src: url('/fonts/OpenSans-Semibold.ttf')
+  font-weight: bold
+
+@font-face
+  font-family: OpenSans
+  src: url('/fonts/OpenSans-Italic.ttf')
+  font-style: italic, oblique
+
+@font-face
+  font-family: Anonymous Pro
+  src: local('Anonymous Pro'), local('AnonymousPro'), url('/fonts/Anonymous Pro.ttf')
+
+a:focus
+  outline: none
+
+::-moz-focus-inner
+  border: 0
+
+.spam
+  display: none
+
+.anchor
+  display: none
+
+article h2,h3,h4,h5,h6
+  .anchor
+    color: #777
+  &:hover
+    .anchor
+      display: inline
+
+
+body
+  // min-height: 100%
+  // height: auto
+  // position: relative
+  background-color: #f3f1ed
+  color: #353535
+
+body >
+  header, footer
+    &, a
+      color: #E1DCD1
+    a
+      &:hover
+        color: #dcdcdc
+
+
+//// Header
+
+.footer-date
+  color: #e1dcd1 !important
+  padding-left: 0 !important
+
+  span
+    font-size: $topbar-link-font-size !important
+
+.logo
+  padding: 0 !important
+  // font-size: rem-calc(27)
+  color: #e1dcd1 !important
+
+//// Footer
+header, footer
+  background-color: #282828
+  //background: linear-gradient(#353535, #000)
+
+footer
+  ul
+    margin: 0
+    height: $topbar-height
+    line-height: $topbar-height
+  li
+    float: left
+    list-style: outside none none
+    a
+      margin-left: 20px
+      //color: #dcdcdc
+      border-bottom: 1px dotted #7a7a7a
+      &:hover
+        border-bottom: 1px dotted #E1DCD1
+        color: #E1DCD1
+
+
+//// Content
+
+// highlight
+
+pre
+  margin-bottom: $paragraph-margin-bottom
+
+code
+  background: #F7F6F5 !important
+  font-size: 1rem
+
+  //span
+    font-style: normal
+
+//// Sidebar
+//.sidebar
+  h2
+    margin-left: 1.1rem
+
+// tag cloud
+
+.tag_cloud li
+  display: inline-block
+  background: none !important
+  padding: 0 !important
+  margin: 0 !important
+  margin-right: 5px !important
+  line-height: 1.1
+
+
+.size-1
+  font-size: 90%
+
+.size-2
+  font-size: 110%
+
+.size-3
+  font-size: 130%
+
+.size-4
+  font-size: 150%
+
+
+// --------------------
+// kaminari
+// --------------------
+
+.pagination
+  @extend .clearfix
+  margin-top: 25px
+  margin-bottom: 10px
+  font-size: 14px
+
+  span
+    background: #EAE7DE
+    border: 1px solid #C5C5C5
+    box-shadow: 0 1px 1px 0px #fff inset
+
+    border-right: none
+    float: left
+
+    &:last-child
+      border: 1px solid #C5C5C5
+
+
+  a, .gap
+    display: block
+    padding: 0 10px
+
+    &:active
+      box-shadow: 0px 1px 2px 0 #C5C4C2 inset
+
+
+  .current
+    box-shadow: 0px 1px 2px 0 #C5C4C2 inset
+    padding: 0 10px
+
+  .next
+    border-radius: 0px 3px 3px 0px
+
+  .prev
+    border-radius: 3px 0 0px 3px
+
+  a
+    color: #777
+  a:hover
+    color: #000
+
+
+//// Buttons
+
+.tags, .comments, .more
+  a
+    //color: $background
+    //color: #fff
+    border-radius: 2px
+    padding: 0px 10px
+    font-size: 14px
+    //border: 1px solid #dcdcdc
+    box-shadow: 0px 1px 2px 0 #777 inset
+    //text-shadow: 0px 1px 1px #999
+
+    color: #C16C8B
+    color: #be224b
+    color: #222
+    //#6CAEC1
+    background: #EAE7DE
+    border-bottom: 1px solid #aaa
+    box-shadow: 0 1px 1px 0px #D9D2C2 inset
+
+    &:hover
+      color: #222
+      color: #be224b
+
+.more
+  margin-left: 5px
+
+.show
+  a
+    border-bottom: none
+    border-top: 1px solid #aaa
+
+
+.content img
+  border-radius: 2px
+
+
+//// Forms
+
+#comments_form
+  textarea
+    margin-bottom: 0
+    border-bottom: 0
+
+.tags
+  float: left
+  margin-right: 5px
+
+
+time
+  color: #adadad
+  font-size: .9rem
+
+//// Comments
+
+#comments
+  //.comment
+    //padding-bottom: 10px
+    // margin-bottom: 2rem
+    //border-bottom: 1px solid #fff
+    //box-shadow: 0px -1px 0px 0px #D9D2C9 inset
+    &:only-child, &:last-child
+      //border: none
+      //box-shadow: none
+      //margin: 0
+      //padding: 0
+  .panel
+    padding: 8px
+    background-color: #fafafa
+
+  .avatar
+    margin-right: 5px
+    border-radius: 3px
+    border: 1px solid #d9d9d9
+    float: left
+
+  .comment .content
+    clear: both
+
+  .comment cite
+    color: #383838
+    font-size: 1.2em
+    font-style: normal
+
+  .comment time
+    font-size: 0.9em
+    color: #adadad
+
+  .comment .number
+    float: right
+
+  .comment .number a
+    color: #adadad
+
+  .number a:hover
+    color: #353535
+
+.content aside
+  margin-top: 3px

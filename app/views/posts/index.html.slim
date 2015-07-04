@@ -1,21 +1,26 @@
 - @posts.includes(:tags).each do |post|
-  section.teaser
-    h2 = link_to post.title, post
+  .row
+    section.teaser.small-12.columns
+      h2 = link_to post.title, post
 
-    - if post.description
-      = space post.description
-    - else
-      = space post.content
-
-    aside
       - if post.description
-        .more
-          = link_to "Читать дальше ›", post_path(post, anchor: "cut")
-      - if post.comments.any?
-        .comments
-          = link_to post.comments.count, post_path(post, anchor: "comments")
-      .tags
-        - post.tags.each do |tag|
-          = link_to tag.name, tag
+        = space post.description
+      - else
+        = space post.content
+
+      aside.row
+        .small-8.columns
+          .tags
+            - post.tags.each do |tag|
+              = link_to tag.name, tag
+
+        .small-4.columns
+          - if post.description
+            .right.more
+              = link_to "Читать дальше ›", post_path(post, anchor: "cut")
+          - if post.comments.any?
+            .right.comments
+              = link_to post.comments.count, post_path(post, anchor: "comments")
+
 
 = paginate @posts

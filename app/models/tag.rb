@@ -11,6 +11,7 @@ class Tag < ActiveRecord::Base
     posts.published.count
   end
 
+  # OPTIMIZE THIS SHITTY SHIT
   def self.cloud
     published.map do |tag|
       size = case tag.count

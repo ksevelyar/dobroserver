@@ -1,9 +1,7 @@
 footer
-  nav
-    ul
-      li
-        |© 2010–#{Time.now.year.to_s}
-        a href="/ksevelyar" ksevelyar
-      li= link_to "Обратная связь", contact_path
-
-
+  .row
+    .small-12.columns
+      ul.left
+        li.footer-date: span © 2010–#{Time.now.year.to_s}
+        li: a href="/ksevelyar" ksevelyar
+        li: a href=contact_path Обратная связь

@@ -1,0 +1,12 @@
+#comments.row
+  .small-12.columns
+
+    h2 Комментарии
+    - @post.comments.each_with_index do |comment, index|
+      .comment.panel id="comment-#{index}" itemprop="comment"
+        .number= link_to "##{index}", post_path(@post, anchor: "comment-#{index}")
+        = gravatar_for comment.email
+        cite= comment.name
+        br
+        time= comment.created_at.strftime('%d.%m.%y в %H:%M')
+        = space comment.content

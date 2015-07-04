@@ -1,4 +1,12 @@
-header
-  nav
-    ul.left
-      li= link_to Settings.main.title, :root, class: "logo"
+.contain-to-grid
+  nav.top-bar
+    .row
+      .small-9.columns
+        ul.title-area
+          li.name
+            h1
+              a.logo href='/' = Settings.main.title
+      .small-3.columns
+        form#sform.u-full-width action="http://www.google.com/search" method="get"
+          input name="q" type="text" placeholder="Поиск"
+          input name="sitesearch" type="hidden" value=Settings.main.domain

@@ -1,11 +1,9 @@
 namespace :sync do
   task :db do
-    require 'yaml'
-
     on roles :db do
-      production_db  = YAML::load(capture "cat #{current_path}/config/database.yml")['production']
+      production_db  = YAML.load(capture "cat #{current_path}/config/database.yml")['production']
+      development_db = YAML.load_file('config/database.yml')['development']
       dump = "#{production_db['database']}.sql"
-
 
       execute "PGPASSWORD='#{production_db['password']}' && export PGPASSWORD && \
                pg_dump --format=custom \
@@ -19,11 +17,8 @@ namespace :sync do
                        #{production_db['database']} ; \
                unset PGPASSWORD"
 
-
-      download! "#{current_path}/tmp/#{dump}", "tmp/"
+      download! "#{current_path}/tmp/#{dump}", 'tmp/'
       execute "rm -f #{current_path}/tmp/#{dump}"
-
-      development_db = YAML::load_file('config/database.yml')['development']
 
       system "pg_restore -Fc \
               --clean \
@@ -37,6 +32,7 @@ namespace :sync do
   end
 
   task :uploads do
-    system "rsync -avz --copy-dirlinks 192.168.0.1:/data/projects/dobroserver/current/public /data/projects/dobroserver/"
+    local_path = File.expand_path('../..', File.dirname(File.dirname(__FILE__)))
+    system "rsync -avz --copy-dirlinks 192.168.0.1:#{current_path}/public #{local_path}"
   end
 end

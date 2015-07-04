@@ -26,18 +26,6 @@ $background3: #353535
   src: local('Anonymous Pro'), local('AnonymousPro'), url('/fonts/Anonymous Pro.ttf')
 
 
-*
-  margin: 0
-  padding: 0
-  border: 0
-
-  -moz-box-sizing: border-box
-  -webkit-box-sizing: border-box
-  box-sizing: border-box
-
-header, footer, aside, nav, article
-  display: block
-
 a:focus
   outline: none
 
@@ -68,16 +56,15 @@ body
   background-color: $background
   color: #353535
 
-body >
-  header, footer
-    background-color: #282828
-    //background: linear-gradient(#353535, #000)
-    height: 40px
-    line-height: 40px
-    nav
-      width: 92%
-      max-width: 1300px
-      margin: 0 auto
+header, footer
+  background-color: #282828
+  //background: linear-gradient(#353535, #000)
+  height: 40px
+  line-height: 40px
+  nav
+    //width: 92%
+    //max-width: 1300px
+    margin: 0 auto
 
 body >
   header, footer
@@ -121,9 +108,9 @@ footer
   bottom: 0
   width: 100%
 
-.content
-  margin-right: 330px
-  max-width: 950px
+//.content
+  //margin-right: 330px
+  //max-width: 950px
   //overflow: hidden
   //padding: 10px
 
@@ -377,7 +364,7 @@ time
   font-size: 14px
   //box-shadow: 0px 1px 2px 0 #C5C4C2 inset
 
-.wrapper img
+.content img
   border-radius: 2px
   max-width: 100%
   height: auto

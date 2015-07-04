@@ -3,6 +3,7 @@ development: &pg
   encoding: unicode
   database: dobroserver_development
   pool: 5
+  host: localhost
   username: postgres
   password:
 

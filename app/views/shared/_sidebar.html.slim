@@ -1,4 +1,4 @@
-aside
+aside.sidebar
   - if Tag.cloud.any?
     h2 Облако тегов
     ul.tag_cloud
@@ -7,21 +7,14 @@ aside
 
   - if Post.published.any?
     h2 Новые посты
-    ul
+    ul.square
       - Post.published.limit(8).each do |post|
         li= link_to post.title, post
 
   - if Comment.any?
     h2 Новые комментарии
-    ul
+    ul.square
       - Comment.recent.includes(:post).limit(8).each do |comment|
         li
           = comment.name
           |  › #{link_to comment.post.title, post_path(comment.post, anchor: 'comments')}
-
-  h2 Поиск
-  form#sform action="http://www.google.com/search" method="get"
-    input name="q" type="text"
-    / TODO icon.png
-    / input{:src => "icon.png", :type => "image"}
-    input name="sitesearch" type="hidden" value=Settings.main.domain

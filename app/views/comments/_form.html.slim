@@ -1,14 +1,28 @@
-#comments_form
-  h2 Добавить комментарий
-  /= form_for [@post, @comment], :remote => true do |f|
-  = form_for [@post, @comment] do |f|
-    div.clearfix
-      = f.text_field :name, placeholder: "Имя или псевдоним", class: "left"
-      = f.email_field :email, placeholder: "Почта", class: "left"
-    div
-      = f.text_area :content
-    .spam
-      = f.text_field :subject
-      = f.text_field :nickname
-    div
-      = f.submit "Отправить"
+#comments_form.row
+  .small-12.large-8.columns
+    h2 Добавить комментарий
+    = form_for [@post, @comment] do |f|
+
+      .row
+        .small-6.columns
+          label
+            | Имя или псевдоним
+            = f.text_field :name
+        .small-6.columns
+          label
+            | Почта
+            = f.email_field :email
+
+      .row
+        .small-12.columns
+          label
+            | Комментарий
+            = f.text_area :content, rows: 5
+
+          .spam
+            = f.text_field :subject
+            = f.text_field :nickname
+
+      .row
+        .small-12.columns
+          = f.submit "Отправить", class: 'button tiny expand'
