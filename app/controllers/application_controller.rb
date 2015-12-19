@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # TODO Продумать авторизацию
-  before_action :authorize
+  before_action :authorize, :sidebar
 
   protected
 
@@ -23,5 +23,11 @@ class ApplicationController < ActionController::Base
   # OPTIMIZE вытащить в blog_records_controller?
   def blog_record_params
     params[:post_id] || params[:page_id]
+  end
+
+  def sidebar
+    @tags_cloud = Tag.cloud_sizes
+    @posts_sidebar = Post.for_sidebar
+    @comments_sidebar = Comment.for_sidebar
   end
 end

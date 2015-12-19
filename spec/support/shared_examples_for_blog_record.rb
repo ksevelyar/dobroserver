@@ -8,8 +8,8 @@ shared_examples "BlogRecord" do
 
   it do
     create factory, title: "Уникальный заголовок"
-    is_expected.to validate_uniqueness_of(:title)
-    is_expected.to validate_uniqueness_of(:slug)
+    is_expected.to validate_uniqueness_of(:title).case_insensitive
+    is_expected.to validate_uniqueness_of(:slug).case_insensitive
   end
 
   it { is_expected.to belong_to(:user) }

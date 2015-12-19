@@ -5,16 +5,22 @@ class Tag < ActiveRecord::Base
 
   has_and_belongs_to_many :posts, association_foreign_key: :blog_record_id
 
-  scope :published, -> { joins(:posts).where('published IS TRUE').uniq }
+  scope :published, -> { joins(:posts).where('blog_records.published IS TRUE').uniq }
 
+  scope :cloud, -> {
+    published
+      .select('tags.id, tags.name, tags.slug, count(blog_records.id) as posts_count')
+      .group('tags.id')
+  }
+
+  # OPTIMIZE: rename to posts_count
   def count
     posts.published.count
   end
 
-  # OPTIMIZE THIS SHITTY SHIT
-  def self.cloud
-    published.map do |tag|
-      size = case tag.count
+  def self.cloud_sizes
+    cloud.map do |tag|
+      size = case tag.posts_count
              when 1..3  then 1
              when 4..6  then 2
              when 7..10 then 3

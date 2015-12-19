@@ -15,6 +15,8 @@ class Comment < ActiveRecord::Base
 
   scope :recent, -> { order('created_at DESC') }
 
+  scope :for_sidebar, -> { recent.includes(:post).limit(8) }
+
   before_save :sanitize_content
   after_create :new_comment_notification
 

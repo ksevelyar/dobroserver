@@ -1,4 +1,4 @@
-- @posts.includes(:tags).each do |post|
+- @posts.each do |post|
   .section.teaser.row
     .small-12.columns
       h2 = link_to post.title, post
@@ -19,7 +19,8 @@
             = link_to "Открыть ›", post_path(post, anchor: "cut")
           - if post.comments.any?
             .comments
-              = link_to post.comments.count, post_path(post, anchor: "comments")
+              / OPTIMIZE: to_a for handle separate COUNT requests
+              = link_to post.comments.to_a.count, post_path(post, anchor: "comments")
 
 
 = paginate @posts

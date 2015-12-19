@@ -15,7 +15,7 @@ gem 'kaminari'
 gem 'sanitize'
 gem 'redcarpet'
 
-gem 'rails_config'
+gem 'config'
 gem 'carrierwave'
 gem 'mini_magick'
 
@@ -45,6 +45,7 @@ end
 group :development do
   # show slow queries
   gem 'bullet'
+  # gem 'rack-mini-profiler'
 
   # only for :development, works faster than webrick
   gem 'puma'

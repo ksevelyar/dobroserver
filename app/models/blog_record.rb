@@ -11,6 +11,8 @@ class BlogRecord < ActiveRecord::Base
   scope :recent, -> { order('published_at DESC') }
   scope :published, -> { recent.where('published IS TRUE AND published_at <= ?', Time.zone.now) }
 
+  scope :for_sidebar, -> { published.limit(8) }
+
   def published?
     published == true and published_at <= Time.zone.now
   end

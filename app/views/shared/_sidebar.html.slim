@@ -1,20 +1,20 @@
 aside.sidebar
-  - if Tag.cloud.any?
+  - if @tags_cloud
     h2 Облако тегов
     ul.tag_cloud
-      - Tag.cloud.each do |name, slug, size|
+      - @tags_cloud.each do |name, slug, size|
         li class="size-#{size}"= link_to name, tag_path(slug)
 
-  - if Post.published.any?
+  - if @posts_sidebar
     h2 Новые посты
     ul.square
-      - Post.published.limit(8).each do |post|
+      - @posts_sidebar.each do |post|
         li= link_to post.title, post
 
-  - if Comment.any?
+  - if @comments_sidebar
     h2 Новые комментарии
     ul.square
-      - Comment.recent.includes(:post).limit(8).each do |comment|
+      - @comments_sidebar.each do |comment|
         li
           = comment.name
           |  › #{link_to comment.post.title, post_path(comment.post, anchor: 'comments')}

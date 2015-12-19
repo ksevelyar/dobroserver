@@ -11,8 +11,6 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-I18n.enforce_available_locales = true
-
 module Dobroserver
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

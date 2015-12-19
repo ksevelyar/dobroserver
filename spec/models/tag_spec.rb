@@ -11,17 +11,21 @@ describe Tag, :type => :model do
     end
   end
 
-  describe ".cloud" do
+  describe ".cloud_sizes" do
+    let(:tags_array) do
+      [
+        double(name: "Tag1", slug: "tag1", posts_count: 1),
+        double(name: "Tag2", slug: "tag2", posts_count: 4),
+        double(name: "Tag3", slug: "tag3", posts_count: 2),
+        double(name: "Tag4", slug: "tag4", posts_count: 10),
+        double(name: "Tag5", slug: "tag5", posts_count: 15)
+      ]
+    end
+
     it "returns tag cloud" do
-      tag1 = double(name: "Tag1", slug: "tag1", count: 1)
-      tag2 = double(name: "Tag2", slug: "tag2", count: 4)
-      tag3 = double(name: "Tag3", slug: "tag3", count: 2)
-      tag4 = double(name: "Tag4", slug: "tag4", count: 10)
-      tag5 = double(name: "Tag5", slug: "tag5", count: 15)
+      expect(described_class).to receive(:cloud).and_return(tags_array)
 
-      expect(described_class).to receive(:published).and_return([tag1, tag2, tag3, tag4, tag5])
-
-      expect(described_class.cloud).to eq [["Tag1", "tag1", 1],
+      expect(described_class.cloud_sizes).to eq [["Tag1", "tag1", 1],
                                        ["Tag2", "tag2", 2],
                                        ["Tag3", "tag3", 1],
                                        ["Tag4", "tag4", 3],
