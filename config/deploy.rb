@@ -8,9 +8,7 @@ set :linked_dirs, %w{log tmp/pids tmp/sockets vendor/bundle public/uploads}
 
 
 # Git
-set :scm, :git
 set :branch, "master"
-set :deploy_via, :export
 set :repo_url, "git@github.com:ksevelyar/dobroserver.git"
 
 # SSH

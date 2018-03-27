@@ -45,5 +45,5 @@ server 'dobroserver.ru', user: 'ksevelyar', roles: %w{web app db}
 # fetch(:default_env).merge!(rails_env: :production)
 
 namespace :deploy do
-  after :publishing, "deploy:sitemap:refresh"
+  after :publishing, "sitemap:refresh"
 end
