@@ -6,7 +6,7 @@ gem 'pg', '~> 0.21'
 gem 'sass-rails', '>= 4'
 gem 'uglifier'
 gem 'coffee-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5'
 
 gem 'jquery-rails'
 gem 'slim-rails'
