@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.2
+  - 2.5
 
 before_script:
   - bundle exec rake setup:development
