@@ -2,12 +2,12 @@ class PagesController < BlogRecordsController
   skip_before_action :authorize, only: :show
 
   def show
-    redirect_to root_url unless @page.published? or admin?
+    redirect_to root_url unless @page.published? || admin?
   end
 
   def new
     @page = Page.new
-    render layout: "editor"
+    render layout: 'editor'
   end
 
   def create
@@ -15,7 +15,7 @@ class PagesController < BlogRecordsController
     if @page.save
       redirect_to edit_page_path(@page.slug)
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -23,13 +23,13 @@ class PagesController < BlogRecordsController
     if @page.update(page_params)
       redirect_to edit_page_path(@page.slug)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     super
-    redirect_to pages_path, notice: "Страница удалёна."
+    redirect_to pages_path, notice: 'Страница удалёна.'
   end
 
   private

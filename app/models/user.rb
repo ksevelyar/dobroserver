@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :pages, dependent: :destroy
 
-  before_save   { self.email.downcase! }
+  before_save { email.downcase! }
 
   has_secure_password
 end

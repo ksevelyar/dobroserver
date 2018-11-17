@@ -1,27 +1,32 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2'
 gem 'pg', '~> 0.21'
+gem 'rails', '~> 4.2'
 
-gem 'sass-rails', '>= 4'
-gem 'uglifier'
 gem 'coffee-rails'
 gem 'foundation-rails', '~> 5'
+gem 'sass-rails', '>= 4'
+gem 'uglifier'
 
 gem 'jquery-rails'
-gem 'slim-rails'
 gem 'kaminari'
+gem 'slim-rails'
 
-gem 'sanitize'
 gem 'redcarpet'
+gem 'sanitize'
 
-gem 'config'
 gem 'carrierwave'
+gem 'config'
 gem 'mini_magick'
 
-gem 'jbuilder'
-gem 'sitemap_generator'
 gem 'draper'
+gem 'jbuilder'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'sitemap_generator'
+# gem 'sidekiq-scheduler', '~> 2.0'
+gem 'sidekiq-cron', '~> 0.4.0'
+gem 'sidekiq-failures'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
@@ -38,8 +43,8 @@ gem 'exception_notification'
 gem 'newrelic_rpm'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -50,20 +55,21 @@ group :development do
   # only for :development, works faster than webrick
   gem 'puma'
 
-  gem 'spring'
   gem 'quiet_assets'
+  gem 'spring'
 
   gem 'better_errors'
   gem 'binding_of_caller'
 
-  gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', '>=0.1.0', require: false
+  gem 'capistrano-sidekiq', require: false
 end
 
 group :test do
-  gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'shoulda-matchers'
 
   gem 'coveralls', require: false
   gem 'simplecov', require: false

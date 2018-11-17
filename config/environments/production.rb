@@ -59,7 +59,7 @@ Dobroserver::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w(application_editor.js application_editor.css application_global.js application_global.css)
+  config.assets.precompile += %w[application_editor.js application_editor.css application_global.js application_global.css]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -81,15 +81,15 @@ Dobroserver::Application.configure do
   config.action_mailer.default_url_options = { host: Settings.main.domain }
 
   config.middleware.use ExceptionNotification::Rack,
-    ignore_exceptions: [
-      'ActionController::InvalidAuthenticityToken',
-      'ActionController::BadRequest',
-      'ActionView::MissingTemplate'
-    ] + ExceptionNotifier.ignored_exceptions,
-    email: {
-    email_prefix: "[dobroserver][error] ",
-    sender_address: Settings.mailer.from,
-    exception_recipients: Settings.mailer.to,
-    email_format: :html
-  }
+                        ignore_exceptions: [
+                          'ActionController::InvalidAuthenticityToken',
+                          'ActionController::BadRequest',
+                          'ActionView::MissingTemplate'
+                        ] + ExceptionNotifier.ignored_exceptions,
+                        email: {
+                          email_prefix: '[dobroserver][error] ',
+                          sender_address: Settings.mailer.from,
+                          exception_recipients: Settings.mailer.to,
+                          email_format: :html
+                        }
 end

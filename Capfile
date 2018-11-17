@@ -7,7 +7,7 @@ require 'capistrano/deploy'
 # Sitemap
 require 'capistrano/sitemap_generator'
 
-require "capistrano/scm/git"
+require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 # Includes tasks from other gems included in your Gemfile
 #

@@ -13,7 +13,6 @@ class Tag < ActiveRecord::Base
       .group('tags.id')
   }
 
-  # OPTIMIZE: rename to posts_count
   def count
     posts.published.count
   end
@@ -31,10 +30,10 @@ class Tag < ActiveRecord::Base
     end
   end
 
-  # FIXME игнорировать не уникальные slug
-  def self.find_or_create tag_names, micropost=false
+  # FIXME: игнорировать не уникальные slug
+  def self.find_or_create(tag_names, micropost = false)
     tags = tag_names.to_s.split(/,\s*/)
-    tags.push "μ" if tags.empty? or micropost
+    tags.push 'μ' if tags.empty? || micropost
 
     tags.uniq.map do |name|
       Tag.find_or_create_by(name: name)

@@ -1,41 +1,40 @@
 require 'spec_helper'
 
-describe CommentsController, :type => :controller do
+describe CommentsController, type: :controller do
   before :each do
     user = create(:user)
     @post = create(:post, user: user)
 
-    request.env["HTTP_REFERER"] = ""
-    request.headers["X-Real-IP"] = "42.42.42.42"
+    request.env['HTTP_REFERER'] = ''
+    request.headers['X-Real-IP'] = '42.42.42.42'
   end
 
-  describe "POST#create" do
-    it "saves the valid comment" do
-      expect{
+  describe 'POST#create' do
+    it 'saves the valid comment' do
+      expect  do
         post :create,
              comment: attributes_for(:comment), post_id: @post.slug
-      }.to change(Comment, :count).by(1)
+      end.to change(Comment, :count).by(1)
     end
 
-    context "with invalid attributes" do
-      it "re-renders new template" do
-        expect{
+    context 'with invalid attributes' do
+      it 're-renders new template' do
+        expect  do
           post :create,
-               comment: attributes_for(:comment, email: "invalid_email"),
+               comment: attributes_for(:comment, email: 'invalid_email'),
                post_id: @post.slug
-
-        }.to change(Comment, :count).by(0)
+        end.to change(Comment, :count).by(0)
       end
     end
   end
 
-  describe "DELETE#destroy" do
-    it "deletes the comment" do
-      comment = create(:comment, post: @post, ip: "42.42.42.42")
+  describe 'DELETE#destroy' do
+    it 'deletes the comment' do
+      comment = create(:comment, post: @post, ip: '42.42.42.42')
 
-      expect{
+      expect  do
         delete :destroy, post_id: @post.slug, id: comment.id
-      }.to change(Comment, :count).by(-1)
+      end.to change(Comment, :count).by(-1)
     end
   end
 end

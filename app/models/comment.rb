@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   attr_accessor :subject, :nickname
   validates :subject, :nickname, absence: true
 
-  # TODO exclusion registered users nicks
+  # TODO: exclusion registered users nicks
 
   belongs_to :post, foreign_key: :blog_record_id
 
@@ -28,9 +28,9 @@ class Comment < ActiveRecord::Base
 
   def sanitize_content
     self.content = Sanitize.clean(content,
-      elements: ['a', 'div', 'p', 'br', 'code', 'pre', 'ul', 'ol', 'li', 'strong'],
-      attributes: {'a' => ['href'], 'div' => ['class']},
-      protocols: {'a' => {'href' => ['http', 'https', 'mailto']}})
+                                  elements: %w[a div p br code pre ul ol li strong],
+                                  attributes: { 'a' => ['href'], 'div' => ['class'] },
+                                  protocols: { 'a' => { 'href' => %w[http https mailto] } })
   end
 
   def new_comment_notification

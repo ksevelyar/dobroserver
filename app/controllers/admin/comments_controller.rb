@@ -13,13 +13,13 @@ class Admin::CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to edit_admin_comment_path(@comment)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to admin_comments_path, notice: "Комментарий удалён."
+    redirect_to admin_comments_path, notice: 'Комментарий удалён.'
   end
 
   private

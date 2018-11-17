@@ -1,5 +1,5 @@
 class PostsController < BlogRecordsController
-  skip_before_action :authorize, only: [:index, :feed, :show]
+  skip_before_action :authorize, only: %i[index feed show]
 
   def index
     @posts = Post.published.includes(:comments, :tags).page(params[:page]).per(8)
@@ -19,7 +19,7 @@ class PostsController < BlogRecordsController
 
   def new
     @post = current_user.posts.build
-    render layout: "editor"
+    render layout: 'editor'
   end
 
   def create
@@ -27,7 +27,7 @@ class PostsController < BlogRecordsController
     if @post.save
       redirect_to edit_post_path(@post.slug)
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -35,13 +35,13 @@ class PostsController < BlogRecordsController
     if @post.update(post_params)
       redirect_to edit_post_path(@post.slug)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     super
-    redirect_to posts_path, notice: "Пост удалён."
+    redirect_to posts_path, notice: 'Пост удалён.'
   end
 
   private

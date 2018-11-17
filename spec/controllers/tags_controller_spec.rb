@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe TagsController, :type => :controller do
+describe TagsController, type: :controller do
   render_views
 
   describe "GET 'show'" do
-    it "returns http success" do
+    it 'returns http success' do
       tag = create :tag
       get :show, id: tag.slug
 

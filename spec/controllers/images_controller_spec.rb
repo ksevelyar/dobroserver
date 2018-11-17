@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ImagesController, :type => :controller do
+describe ImagesController, type: :controller do
   before :each do
     user = create(:user)
     session[:user_id] = user.id
@@ -8,23 +8,23 @@ describe ImagesController, :type => :controller do
     @page = create(:page, user: user)
   end
 
-  describe "POST#create" do
-    it "saves the valid image" do
-      expect{
+  describe 'POST#create' do
+    it 'saves the valid image' do
+      expect  do
         post :create, format: :js,
-             image: attributes_for(:image), page_id: @page.slug
-      }.to change(Image, :count).by(1)
+                      image: attributes_for(:image), page_id: @page.slug
+      end.to change(Image, :count).by(1)
     end
   end
 
-  describe "DELETE#destroy" do
-    it "deletes the image" do
+  describe 'DELETE#destroy' do
+    it 'deletes the image' do
       image = create(:image, blog_record: @page)
 
-      expect{
+      expect  do
         delete :destroy, format: :js,
-               page_id: @page.slug, id: image.id
-      }.to change(Image, :count).by(-1)
+                         page_id: @page.slug, id: image.id
+      end.to change(Image, :count).by(-1)
     end
   end
 end

@@ -5,9 +5,9 @@ set :stage, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-#role :app, %w{deploy@example.com}
-#role :web, %w{deploy@example.com}
-#role :db,  %w{deploy@example.com}
+# role :app, %w{deploy@example.com}
+# role :web, %w{deploy@example.com}
+# role :db,  %w{deploy@example.com}
 
 # Extended Server Syntax
 # ======================
@@ -18,7 +18,7 @@ set :stage, :production
 
 set :rvm_type, :system
 
-server 'dobroserver.ru', user: 'ksevelyar', roles: %w{web app db}
+server 'dobroserver.ru', user: 'ksevelyar', roles: %w[web app db]
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -45,5 +45,5 @@ server 'dobroserver.ru', user: 'ksevelyar', roles: %w{web app db}
 # fetch(:default_env).merge!(rails_env: :production)
 
 namespace :deploy do
-  after :publishing, "sitemap:refresh"
+  after :publishing, 'sitemap:refresh'
 end

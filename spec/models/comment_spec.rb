@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Comment, :type => :model do
+describe Comment, type: :model do
   it { is_expected.to validate_presence_of :content }
   it { is_expected.to validate_presence_of :email }
   it { is_expected.to validate_presence_of :name }
@@ -15,17 +15,15 @@ describe Comment, :type => :model do
 
   it { is_expected.to belong_to :post }
 
-  describe "#hot" do
-    it "returns true for new comments" do
-
+  describe '#hot' do
+    it 'returns true for new comments' do
       post = create :post
       comment = create :comment, post: post
-
 
       expect(comment.hot?).to be_truthy
     end
 
-    it "returns false for old comments" do
+    it 'returns false for old comments' do
       post = create :post
       comment = create :comment, post: post, created_at: Time.now - 40.minutes
 
@@ -33,7 +31,7 @@ describe Comment, :type => :model do
     end
   end
 
-  describe "sanitize" do
+  describe 'sanitize' do
     pending
   end
 end

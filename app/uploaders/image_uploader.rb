@@ -7,8 +7,8 @@ class ImageUploader < BlogRecordUploader
 
   protected
 
-  def big? image
+  def big?(image)
     image = MiniMagick::Image.open(image.path)
-    image[:width] > 950 or image[:height] > 600
+    (image[:width] > 950) || (image[:height] > 600)
   end
 end

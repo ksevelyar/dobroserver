@@ -3,7 +3,7 @@ class ContactController < ApplicationController
 
   def new
     @message = Message.new
-    @meta_title = "Обратная связь"
+    @meta_title = 'Обратная связь'
   end
 
   def create
@@ -11,7 +11,7 @@ class ContactController < ApplicationController
 
     if @message.valid?
       NotificationsMailer.new_message(@message).deliver_now
-      redirect_to root_path, notice: "Сообщение отправлено."
+      redirect_to root_path, notice: 'Сообщение отправлено.'
     else
       flash.now.alert = @message.errors.full_messages.to_sentence
       render :new

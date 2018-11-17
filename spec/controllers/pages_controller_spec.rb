@@ -1,20 +1,19 @@
 require 'spec_helper'
 
-describe PagesController, :type => :controller do
-
- describe "guest access" do
+describe PagesController, type: :controller do
+  describe 'guest access' do
     before :each do
       user = create(:user)
       @page = create(:page, user: user)
     end
 
-    describe "GET#show" do
-      it "renders the :show view for published page" do
+    describe 'GET#show' do
+      it 'renders the :show view for published page' do
         get :show, id: @page.slug
         expect(response).to render_template :show
       end
 
-      it "denies access for non published page" do
+      it 'denies access for non published page' do
         page = create :page, published: false
         get :show, id: page.slug
 
@@ -23,7 +22,7 @@ describe PagesController, :type => :controller do
     end
   end
 
-  describe "admin access" do
+  describe 'admin access' do
     before :each do
       @user = create(:user, admin: true)
       session[:user_id] = @user.id
@@ -31,8 +30,8 @@ describe PagesController, :type => :controller do
       @page = create(:page, user: @user)
     end
 
-    describe "GET#show" do
-      it "grants access for non published page" do
+    describe 'GET#show' do
+      it 'grants access for non published page' do
         page = create :page, published: false
         get :show, id: page.slug
 
@@ -40,61 +39,61 @@ describe PagesController, :type => :controller do
       end
     end
 
-    describe "GET#edit" do
-      it "renders the :edit view" do
+    describe 'GET#edit' do
+      it 'renders the :edit view' do
         get :edit, id: @page.slug
 
         expect(response).to render_template :edit
       end
     end
 
-    describe "GET#new" do
-      it "renders the :edit view" do
+    describe 'GET#new' do
+      it 'renders the :edit view' do
         get :new, id: @page.slug
 
         expect(response).to render_template :new
       end
     end
 
-    describe "POST#create" do
-      it "saves the valid page to database" do
-        expect{
+    describe 'POST#create' do
+      it 'saves the valid page to database' do
+        expect  do
           post :create, page: attributes_for(:page)
-        }.to change(Page, :count).by(1)
+        end.to change(Page, :count).by(1)
       end
 
-      context "with invalid attributes" do
-        it "re-renders new template" do
-          post :create, page: attributes_for(:page, content: "")
+      context 'with invalid attributes' do
+        it 're-renders new template' do
+          post :create, page: attributes_for(:page, content: '')
 
           expect(response).to render_template :new
         end
       end
     end
 
-    describe "PATCH#update" do
-      it "updates the valid page" do
+    describe 'PATCH#update' do
+      it 'updates the valid page' do
         patch :update, id: @page.slug,
-          page: attributes_for(:page, content: "chunky bacon")
+                       page: attributes_for(:page, content: 'chunky bacon')
 
-        expect(@page.reload.content).to eq "chunky bacon"
+        expect(@page.reload.content).to eq 'chunky bacon'
       end
 
-      context "with invalid attributes" do
-        it "re-renders edit template" do
+      context 'with invalid attributes' do
+        it 're-renders edit template' do
           patch :update, id: @page.slug,
-            page: attributes_for(:page, content: "")
+                         page: attributes_for(:page, content: '')
 
           expect(response).to render_template :edit
         end
       end
     end
 
-    describe "DELETE#destroy" do
-      it "deletes the page" do
-        expect{
+    describe 'DELETE#destroy' do
+      it 'deletes the page' do
+        expect do
           delete :destroy, id: @page.slug
-        }.to change(Page, :count).by(-1)
+        end.to change(Page, :count).by(-1)
       end
     end
   end

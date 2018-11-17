@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   def create
-    @record = BlogRecord.find_by_slug!(blog_record_params)
+    @record = BlogRecord.find_by!(slug: blog_record_params)
     @image = @record.images.build(image_params)
 
     if @image.save

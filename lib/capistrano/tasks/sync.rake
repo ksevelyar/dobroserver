@@ -1,7 +1,7 @@
 namespace :sync do
   task :db do
     on roles :db do
-      production_db  = YAML.load(capture "cat #{current_path}/config/database.yml")['production']
+      production_db  = YAML.safe_load(capture("cat #{current_path}/config/database.yml"))['production']
       development_db = YAML.load_file('config/database.yml')['development']
       dump = "#{production_db['database']}.sql"
 

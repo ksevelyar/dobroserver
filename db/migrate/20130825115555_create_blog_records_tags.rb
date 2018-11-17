@@ -4,6 +4,6 @@ class CreateBlogRecordsTags < ActiveRecord::Migration
       t.integer :blog_record_id
       t.integer :tag_id
     end
-    add_index :blog_records_tags, [:blog_record_id, :tag_id]
+    add_index :blog_records_tags, %i[blog_record_id tag_id]
   end
 end

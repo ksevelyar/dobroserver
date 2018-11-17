@@ -18,19 +18,19 @@ class Post < BlogRecord
   end
 
   def tag_names
-    @tag_names || tags.pluck(:name).join(", ")
+    @tag_names || tags.pluck(:name).join(', ')
   end
 
   private
 
   def micropost?
-    !raw_content.include? "#cut"
+    !raw_content.include? '#cut'
   end
 
   def split
     if !micropost?
-      self.description = raw_content.split("#cut").first
-      self.content     = raw_content.split("#cut").last
+      self.description = raw_content.split('#cut').first
+      self.content     = raw_content.split('#cut').last
     else
       self.description = nil
       self.content     = raw_content

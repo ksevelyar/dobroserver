@@ -1,6 +1,6 @@
 class AttachmentsController < ApplicationController
   def create
-    @record = BlogRecord.find_by_slug!(blog_record_params)
+    @record = BlogRecord.find_by!(slug: blog_record_params)
     @attachment = @record.attachments.build(attachment_params)
 
     if @attachment.save

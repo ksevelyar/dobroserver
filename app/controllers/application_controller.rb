@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # TODO Продумать авторизацию
+  # TODO: Продумать авторизацию
   before_action :authorize, :sidebar
 
   protected
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     current_user.try(:admin?)
   end
 
-  # OPTIMIZE вытащить в blog_records_controller?
+  # OPTIMIZE: вытащить в blog_records_controller?
   def blog_record_params
     params[:post_id] || params[:page_id]
   end

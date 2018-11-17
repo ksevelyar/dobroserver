@@ -14,7 +14,7 @@ class BlogRecord < ActiveRecord::Base
   scope :for_sidebar, -> { published.limit(8) }
 
   def published?
-    published == true and published_at <= Time.zone.now
+    (published == true) && (published_at <= Time.zone.now)
   end
 
   after_update  :update_files_dir
@@ -24,6 +24,7 @@ class BlogRecord < ActiveRecord::Base
 
   def update_files_dir
     return unless slug_changed?
+
     BlogRecordUploader.update_files_dir type, slug_was, slug
   end
 

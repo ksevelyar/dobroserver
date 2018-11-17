@@ -2,16 +2,16 @@ class CommentsController < ApplicationController
   skip_before_action :authorize
 
   def create
-    post = Post.find_by_slug!(params[:post_id])
+    post = Post.find_by!(slug: params[:post_id])
     comment = post.comments.build(comment_params)
-    comment.ip = request.headers["X-Real-IP"]
+    comment.ip = request.headers['X-Real-IP']
 
     if comment.save
-      # TODO комментарии через ajax или turbolinks
+      # TODO: комментарии через ajax или turbolinks
       # respond_to do |format|
       #   format.js
       # end
-      redirect_to post_path(post, anchor: "comments")
+      redirect_to post_path(post, anchor: 'comments')
     else
       redirect_to :back
     end
@@ -30,8 +30,8 @@ class CommentsController < ApplicationController
                                     :subject, :nickname)
   end
 
-  # TODO подключить в интерфейсе
+  # TODO: подключить в интерфейсе
   def editable?
-    (@comment.ip == request.headers["X-Real-IP"] and @comment.hot?) or admin?
+    ((@comment.ip == request.headers['X-Real-IP']) && @comment.hot?) || admin?
   end
 end

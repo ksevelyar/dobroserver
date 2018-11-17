@@ -5,7 +5,7 @@ class Admin::PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
-    render layout: "editor"
+    render layout: 'editor'
   end
 
   def create
@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
     if @post.save
       redirect_to edit_post_path(@post.slug)
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -21,13 +21,13 @@ class Admin::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to edit_post_path(@post.slug)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     super
-    redirect_to posts_path, notice: "Пост удалён."
+    redirect_to posts_path, notice: 'Пост удалён.'
   end
 
   private
