@@ -1,5 +1,5 @@
 upstream dobroserver {
-  server unix:/data/projects/dobroserver/shared/unicorn.sock fail_timeout=0;
+  server unix:/code/dobroserver/shared/unicorn.sock fail_timeout=0;
 }
 
 server {
@@ -16,9 +16,9 @@ server {
   client_max_body_size    50m;
   client_body_buffer_size 128k;
 
-  root /data/projects/dobroserver/current/public;
+  root /code/dobroserver/current/public;
 
-  error_log  /data/projects/dobroserver/shared/log/nginx_error.log;
+  error_log  /code/dobroserver/shared/log/nginx_error.log;
   access_log off;
 
   rewrite_log on;

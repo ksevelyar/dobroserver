@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'pg', '~> 0.21'
@@ -63,7 +65,7 @@ group :development do
 
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', '>=0.1.0', require: false
+  gem 'capistrano-rbenv', require: false
   gem 'capistrano-sidekiq', require: false
 end
 

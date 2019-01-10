@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 # App
 set :application, 'dobroserver'
-set :deploy_to,   "/data/projects/#{fetch :application}"
+set :deploy_to,   "/code/#{fetch :application}"
 set :rails_env, 'production'
 
 set :linked_files, %w[config/database.yml config/settings/production.yml newrelic.yml]

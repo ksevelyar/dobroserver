@@ -1,4 +1,6 @@
-app_path   = '/data/projects/dobroserver'
+# frozen_string_literal: true
+
+app_path   = '/code/dobroserver'
 rails_root = "#{app_path}/current"
 
 pid_file   = "#{rails_root}/tmp/pids/unicorn.pid"
