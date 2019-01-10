@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 ### BEGIN INIT INFO
 # Provides:          unicorn_dobroserver
@@ -20,9 +20,9 @@ APP_PATH=/code/$APP_NAME
 APP_ROOT=$APP_PATH/current
 
 # Env settings
-PATH=/home/$USER/.rbenv/bin:/home/$USER/.rbenv/shims:$PATH  
+PATH=/home/$USER/.rbenv/bin:/home/$USER/.rbenv/shims:$PATH
 CMD="cd $APP_ROOT; rbenv exec bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
-PID="$APP_PATH/shared/pids/unicorn.pid"
+PID="$APP_PATH/shared/tmp/pids/unicorn.pid"
 OLD_PID="$PID.oldbin"
 
 cd $APP_ROOT || exit 1
@@ -54,7 +54,7 @@ case $1 in
   restart|reload|upgrade)
     sig USR2 && echo "reloaded $APP_NAME" && exit 0
     echo >&2 "Couldn't reload, starting '$CMD' instead"
-    $CMD
+    su - $USER -c "$CMD"
     ;;
   rotate)
     sig USR1 && echo rotated logs OK && exit 0
