@@ -31,7 +31,7 @@ gem 'sinatra', require: false
 gem 'sitemap_generator'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 gem 'pry-rails'
 
