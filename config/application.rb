@@ -18,6 +18,8 @@ module Dobroserver
     config.autoload_paths += %W[#{config.root}/lib]
     config.load_defaults 5.2
 
+    routes.default_url_options[:host] = Settings.main.domain
+
     config.generators do |g|
       g.assets false
       g.helper false
