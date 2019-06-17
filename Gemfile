@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'pg'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 
 gem 'coffee-rails'
 gem 'foundation-rails', '~> 5'
@@ -36,6 +36,7 @@ gem 'bcrypt-ruby'
 gem 'pry-rails'
 
 # App server
+gem 'bootsnap', require: false
 gem 'unicorn'
 
 # Mails 500 errors

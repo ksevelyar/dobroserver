@@ -20,7 +20,7 @@ set :stage, :production
 
 set :rvm_type, :system
 
-server 'dobroserver.ru', user: 'ksevelyar', roles: %w[web app db]
+server 'dobroserver.ru', user: 'ksevelyar', roles: %w[web app db], port: 9922
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
