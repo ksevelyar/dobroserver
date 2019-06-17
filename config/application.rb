@@ -17,6 +17,7 @@ module Dobroserver
     config.time_zone = 'Moscow'
     config.autoload_paths += %W[#{config.root}/lib]
     config.action_controller.per_form_csrf_tokens = true
+    config.load_defaults 5.1
 
     config.generators do |g|
       g.assets false

@@ -24,8 +24,8 @@ class BlogRecord < ApplicationRecord
   private
 
   def update_files_dir
-    return unless slug_changed?
+    return unless saved_change_to_slug?
 
-    BlogRecordUploader.update_files_dir type, slug_was, slug
+    BlogRecordUploader.update_files_dir type, slug_before_last_save, slug
   end
 end

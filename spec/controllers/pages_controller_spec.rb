@@ -5,8 +5,7 @@ require 'spec_helper'
 describe PagesController, type: :controller do
   describe 'guest access' do
     before :each do
-      user = create(:user)
-      @page = create(:page, user: user)
+      @page = create(:page)
     end
 
     describe 'GET#show' do

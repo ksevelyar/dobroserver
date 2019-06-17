@@ -8,7 +8,6 @@ atom_feed language: 'ru-RU' do |feed|
     feed.entry(post,
                published: post.published_at,
                updated: post.published_at) do |entry|
-
       entry.title post.title
 
       if post.description?
