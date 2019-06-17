@@ -1,4 +1,6 @@
-class CreateBlogRecords < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateBlogRecords < ActiveRecord::Migration[4.2]
   def change
     create_table :blog_records do |t|
       t.string :type

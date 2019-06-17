@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start 'rails'
@@ -7,7 +9,6 @@ elsif ENV['TRAVIS']
   Coveralls::Output.silent = true
 end
 
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
@@ -16,8 +17,6 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
-# Checks for pending migrations before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 Shoulda::Matchers.configure do |config|
@@ -28,14 +27,6 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
-  # ## Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
-
   config.before(:all) do
     FileUtils.rm_rf "#{::Rails.root}/public/uploads"
   end
@@ -53,13 +44,7 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  # config.order = "random"
-
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.backtrace_exclusion_patterns << /gems/
 end

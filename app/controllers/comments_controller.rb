@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   skip_before_action :authorize
 
@@ -7,20 +9,17 @@ class CommentsController < ApplicationController
     comment.ip = request.headers['X-Real-IP']
 
     if comment.save
-      # TODO: комментарии через ajax или turbolinks
-      # respond_to do |format|
-      #   format.js
-      # end
       redirect_to post_path(post, anchor: 'comments')
     else
-      redirect_to :back
+      redirect_back(fallback_location: '/')
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy if editable?
-    redirect_to :back
+
+    redirect_back(fallback_location: '/')
   end
 
   private
@@ -30,7 +29,6 @@ class CommentsController < ApplicationController
                                     :subject, :nickname)
   end
 
-  # TODO: подключить в интерфейсе
   def editable?
     ((@comment.ip == request.headers['X-Real-IP']) && @comment.hot?) || admin?
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe CommentsController, type: :controller do
@@ -12,17 +14,14 @@ describe CommentsController, type: :controller do
   describe 'POST#create' do
     it 'saves the valid comment' do
       expect  do
-        post :create,
-             comment: attributes_for(:comment), post_id: @post.slug
+        post :create, params: { comment: attributes_for(:comment), post_id: @post.slug }
       end.to change(Comment, :count).by(1)
     end
 
     context 'with invalid attributes' do
       it 're-renders new template' do
         expect  do
-          post :create,
-               comment: attributes_for(:comment, email: 'invalid_email'),
-               post_id: @post.slug
+          post :create, params: { comment: attributes_for(:comment, email: 'invalid_email'), post_id: @post.slug }
         end.to change(Comment, :count).by(0)
       end
     end
@@ -33,7 +32,7 @@ describe CommentsController, type: :controller do
       comment = create(:comment, post: @post, ip: '42.42.42.42')
 
       expect  do
-        delete :destroy, post_id: @post.slug, id: comment.id
+        delete :destroy, params: { post_id: @post.slug, id: comment.id }
       end.to change(Comment, :count).by(-1)
     end
   end

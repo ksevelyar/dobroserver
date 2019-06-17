@@ -1,10 +1,9 @@
-FactoryGirl.define do
-  factory :comment do
-    name 'MyString'
-    email 'chunky@bacon.tld'
-    content 'MyText'
+# frozen_string_literal: true
 
-    subject ''
-    nickname ''
+FactoryBot.define do
+  factory :comment do
+    name { 'Commenter' }
+    email { 'chunky@bacon.tld' }
+    content { 'MyText' }
   end
 end

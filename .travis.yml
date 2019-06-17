@@ -1,8 +1,11 @@
 language: ruby
 rvm:
-  - 2.5
+  - 2.6.3
 
 before_script:
   - bundle exec rake setup:development
 
 script: bundle exec rspec spec
+
+services:
+  - postgresql

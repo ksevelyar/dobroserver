@@ -1,4 +1,6 @@
-Dobroserver::Application.routes.draw do
+# frozen_string_literal: true
+
+Rails.application.routes.draw do
   get  'contact' => 'contact#new'
   post 'contact' => 'contact#create'
 

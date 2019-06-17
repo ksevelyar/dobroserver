@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 shared_examples 'BlogRecord' do
@@ -7,7 +9,7 @@ shared_examples 'BlogRecord' do
   it { is_expected.to validate_presence_of :slug }
 
   it do
-    create factory, title: 'Уникальный заголовок'
+    create factory, title: 'Unique title'
     is_expected.to validate_uniqueness_of(:title).case_insensitive
     is_expected.to validate_uniqueness_of(:slug).case_insensitive
   end
@@ -46,16 +48,6 @@ shared_examples 'BlogRecord' do
       expect(image_path != new_image_path).to be_truthy
       expect(FileTest.exists?(image_path)).to be_falsey
       expect(FileTest.exists?(new_image_path)).to be_truthy
-    end
-  end
-
-  describe '#remove_files_dir' do
-    it 'removes file directory after destroy' do
-      blog_record = create factory
-      image_path = blog_record.images.first.image.path
-
-      blog_record.destroy
-      expect(FileTest.exists?(image_path)).to be_falsey
     end
   end
 end

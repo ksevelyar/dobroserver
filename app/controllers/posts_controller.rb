@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < BlogRecordsController
   skip_before_action :authorize, only: %i[index feed show]
 

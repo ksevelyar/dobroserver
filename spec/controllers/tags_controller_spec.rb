@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe TagsController, type: :controller do
   render_views
 
   describe "GET 'show'" do
-    it 'returns http success' do
-      tag = create :tag
-      get :show, id: tag.slug
+    let!(:tag) { create :tag }
 
-      expect(response).to be_success
+    it 'returns http success' do
+      get :show, params: { id: tag.slug }
+
+      expect(response).to be_successful
       expect(response).to render_template :show
     end
   end

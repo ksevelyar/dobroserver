@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < BlogRecordsController
   skip_before_action :authorize, only: :show
 

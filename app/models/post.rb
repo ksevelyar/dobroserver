@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < BlogRecord
   attr_writer :raw_content, :tag_names
 
