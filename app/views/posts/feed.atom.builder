@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 atom_feed language: 'ru-RU' do |feed|
   feed.title Settings.main.title
   feed.updated @posts.pluck(:published_at).first if @posts.any?
@@ -5,7 +7,7 @@ atom_feed language: 'ru-RU' do |feed|
   @posts.each do |post|
     feed.entry(post,
                published: post.published_at,
-               updated:   post.published_at) do |entry|
+               updated: post.published_at) do |entry|
 
       entry.title post.title
 

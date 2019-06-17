@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :setup do
   desc 'Setup configs and database'
   task :development do

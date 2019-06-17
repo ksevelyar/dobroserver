@@ -1,9 +1,11 @@
-class Comment < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Comment < ApplicationRecord
   validates :content, :email, :name, :blog_record_id, presence: true
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence:   true,
-                    format:     { with: VALID_EMAIL_REGEX }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  validates :email, presence: true,
+                    format: { with: VALID_EMAIL_REGEX }
 
   # Antispam
   attr_accessor :subject, :nickname
@@ -34,8 +36,6 @@ class Comment < ActiveRecord::Base
   end
 
   def new_comment_notification
-    unless email == Settings.mailer.to
-      NotificationsMailer.new_comment(self).deliver_now
-    end
+    NotificationsMailer.new_comment(self).deliver_now unless email == Settings.mailer.to
   end
 end

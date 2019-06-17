@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'pg', '~> 0.21'
-gem 'rails', '~> 4.2'
+gem 'pg'
+gem 'rails', '~> 5.0.0'
 
 gem 'coffee-rails'
 gem 'foundation-rails', '~> 5'
@@ -23,12 +23,12 @@ gem 'mini_magick'
 
 gem 'draper'
 gem 'jbuilder'
+gem 'listen', '~> 3.0'
 gem 'sidekiq'
+gem 'sidekiq-cron'
+gem 'sidekiq-failures'
 gem 'sinatra', require: false
 gem 'sitemap_generator'
-# gem 'sidekiq-scheduler', '~> 2.0'
-gem 'sidekiq-cron', '~> 0.4.0'
-gem 'sidekiq-failures'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
@@ -45,20 +45,15 @@ gem 'exception_notification'
 gem 'newrelic_rpm'
 
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
 group :development do
   # show slow queries
   gem 'bullet'
-  # gem 'rack-mini-profiler'
-
-  # only for :development, works faster than webrick
-  gem 'puma'
-
-  gem 'quiet_assets'
-  gem 'spring'
+  gem 'rack-mini-profiler'
 
   gem 'better_errors'
   gem 'binding_of_caller'

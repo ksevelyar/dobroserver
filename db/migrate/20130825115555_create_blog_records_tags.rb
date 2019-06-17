@@ -1,4 +1,6 @@
-class CreateBlogRecordsTags < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateBlogRecordsTags < ActiveRecord::Migration[4.2]
   def change
     create_table :blog_records_tags, id: false do |t|
       t.integer :blog_record_id

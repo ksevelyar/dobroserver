@@ -1,13 +1,15 @@
-class Tag < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Tag < ApplicationRecord
   include Slug
 
   validates :name, :slug, uniqueness: { case_sensitive: false }, presence: true
 
   has_and_belongs_to_many :posts, association_foreign_key: :blog_record_id
 
-  scope :published, -> { joins(:posts).where('blog_records.published IS TRUE').uniq }
+  scope :published, -> { joins(:posts).where('blog_records.published IS TRUE').distinct }
 
-  scope :cloud, -> {
+  scope :cloud, lambda {
     published
       .select('tags.id, tags.name, tags.slug, count(blog_records.id) as posts_count')
       .group('tags.id')
@@ -30,7 +32,6 @@ class Tag < ActiveRecord::Base
     end
   end
 
-  # FIXME: игнорировать не уникальные slug
   def self.find_or_create(tag_names, micropost = false)
     tags = tag_names.to_s.split(/,\s*/)
     tags.push 'μ' if tags.empty? || micropost

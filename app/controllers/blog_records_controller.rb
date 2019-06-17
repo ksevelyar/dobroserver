@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlogRecordsController < ApplicationController
   before_action :find_record, only: %i[show edit update destroy]
   before_action :check_access, only: :show

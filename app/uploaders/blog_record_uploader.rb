@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlogRecordUploader < CarrierWave::Uploader::Base
   storage :file
 
@@ -12,9 +14,7 @@ class BlogRecordUploader < CarrierWave::Uploader::Base
     old_path = "#{Rails.root}/public/uploads/#{type.pluralize.underscore}/#{old_slug}"
     new_path = "#{Rails.root}/public/uploads/#{type.pluralize.underscore}/#{new_slug}"
 
-    if FileTest.exists?(old_path) && !FileTest.exists?(new_path)
-      FileUtils.mv(old_path, new_path)
-    end
+    FileUtils.mv(old_path, new_path) if FileTest.exists?(old_path) && !FileTest.exists?(new_path)
   end
 
   def self.remove_files_dir(type, slug)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Space < Redcarpet::Render::HTML
   def preprocess(text)
     spoilers text
@@ -9,7 +11,6 @@ class Space < Redcarpet::Render::HTML
     text
   end
 
-  # Якори для заголовков с поддержкой кириллицы
   def header(text, level)
     level += 1
     slug = Translit.slug(text)

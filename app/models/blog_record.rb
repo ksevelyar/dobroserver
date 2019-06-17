@@ -1,4 +1,6 @@
-class BlogRecord < ActiveRecord::Base
+# frozen_string_literal: true
+
+class BlogRecord < ApplicationRecord
   include Slug
 
   validates :user_id, :title, :content, :slug, presence: true
@@ -13,12 +15,11 @@ class BlogRecord < ActiveRecord::Base
 
   scope :for_sidebar, -> { published.limit(8) }
 
-  def published?
-    (published == true) && (published_at <= Time.zone.now)
-  end
+  after_update :update_files_dir
 
-  after_update  :update_files_dir
-  after_destroy :remove_files_dir
+  def published?
+    published && (published_at <= Time.zone.now)
+  end
 
   private
 
@@ -26,9 +27,5 @@ class BlogRecord < ActiveRecord::Base
     return unless slug_changed?
 
     BlogRecordUploader.update_files_dir type, slug_was, slug
-  end
-
-  def remove_files_dir
-    BlogRecordUploader.remove_files_dir type, slug
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe ImagesController, type: :controller do
@@ -11,8 +13,7 @@ describe ImagesController, type: :controller do
   describe 'POST#create' do
     it 'saves the valid image' do
       expect  do
-        post :create, format: :js,
-                      image: attributes_for(:image), page_id: @page.slug
+        post :create, params: { format: :js, image: attributes_for(:image), page_id: @page.slug }
       end.to change(Image, :count).by(1)
     end
   end
@@ -22,8 +23,7 @@ describe ImagesController, type: :controller do
       image = create(:image, blog_record: @page)
 
       expect  do
-        delete :destroy, format: :js,
-                         page_id: @page.slug, id: image.id
+        delete :destroy, params: { format: :js, page_id: @page.slug, id: image.id }
       end.to change(Image, :count).by(-1)
     end
   end

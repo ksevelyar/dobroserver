@@ -1,5 +1,11 @@
-FactoryGirl.define do
+# frozen_string_literal: true
+
+FactoryBot.define do
   factory :image do
-    image File.open(File.join(Rails.root, '/spec/fixtures/files/kim_alexis.jpg'))
+    image do
+      Rack::Test::UploadedFile.new(
+        Rails.root.join('spec/fixtures/files/kim_alexis.jpg'), 'image/jpeg'
+      )
+    end
   end
 end

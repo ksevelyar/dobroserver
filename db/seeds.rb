@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.development?
   user = User.create(name: 'admin',
                      email: 'admin@domain.tld',

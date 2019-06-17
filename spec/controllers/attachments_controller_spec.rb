@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe AttachmentsController, type: :controller do
@@ -11,8 +13,7 @@ describe AttachmentsController, type: :controller do
   describe 'POST#create' do
     it 'saves the valid attachment' do
       expect  do
-        post :create, format: :js,
-                      attachment: attributes_for(:attachment), page_id: @page.slug
+        post :create, params: { format: :js, attachment: attributes_for(:attachment), page_id: @page.slug }
       end.to change(Attachment, :count).by(1)
     end
   end
@@ -22,8 +23,7 @@ describe AttachmentsController, type: :controller do
       attachment = create(:attachment, blog_record: @page)
 
       expect do
-        delete :destroy, format: :js,
-                         page_id: @page.slug, id: attachment.id
+        delete :destroy, params: { format: :js, page_id: @page.slug, id: attachment.id }
       end.to change(Attachment, :count).by(-1)
     end
   end

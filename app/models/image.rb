@@ -1,4 +1,6 @@
-class Image < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Image < ApplicationRecord
   validates :image, :blog_record_id, presence: true
 
   belongs_to :blog_record

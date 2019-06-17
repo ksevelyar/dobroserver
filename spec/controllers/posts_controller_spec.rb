@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe PostsController, type: :controller do
@@ -23,13 +25,13 @@ describe PostsController, type: :controller do
 
     describe 'GET#show' do
       it 'renders the :show view for published post' do
-        get :show, id: @post.slug
+        get :show, params: { id: @post.slug }
         expect(response).to render_template :show
       end
 
       it 'denies access for non published post' do
         post = create :post, published: false
-        get :show, id: post.slug
+        get :show, params: { id: post.slug }
 
         expect(response).to redirect_to root_url
       end
@@ -47,7 +49,7 @@ describe PostsController, type: :controller do
     describe 'GET#show' do
       it 'grants access for non published post' do
         post = create :post, published: false
-        get :show, id: post.slug
+        get :show, params: { id: post.slug }
 
         expect(response).to render_template :show
       end
@@ -55,7 +57,7 @@ describe PostsController, type: :controller do
 
     describe 'GET#edit' do
       it 'renders the :edit view' do
-        get :edit, id: @post.slug
+        get :edit, params: { id: @post.slug }
 
         expect(response).to render_template :edit
       end
@@ -63,7 +65,7 @@ describe PostsController, type: :controller do
 
     describe 'GET#new' do
       it 'renders the :edit view' do
-        get :new, id: @post.slug
+        get :new, params: { id: @post.slug }
 
         expect(response).to render_template :new
       end
@@ -72,13 +74,13 @@ describe PostsController, type: :controller do
     describe 'POST#create' do
       it 'saves the valid post to database' do
         expect  do
-          post :create, post: attributes_for(:post)
+          post :create, params: { post: attributes_for(:post) }
         end.to change(Post, :count).by(1)
       end
 
       context 'with invalid attributes' do
         it 're-renders new template' do
-          post :create, post: attributes_for(:post, raw_content: '')
+          post :create, params: { post: attributes_for(:post, raw_content: '') }
 
           expect(response).to render_template :new
         end
@@ -87,16 +89,14 @@ describe PostsController, type: :controller do
 
     describe 'PATCH#update' do
       it 'updates the valid post' do
-        patch :update, id: @post.slug,
-                       post: attributes_for(:post, raw_content: 'chunky bacon')
+        patch :update, params: { id: @post.slug, post: attributes_for(:post, raw_content: 'chunky bacon') }
 
         expect(@post.reload.content).to eq 'chunky bacon'
       end
 
       context 'with invalid attributes' do
         it 're-renders edit template' do
-          patch :update, id: @post.slug,
-                         post: attributes_for(:post, raw_content: '')
+          patch :update, params: { id: @post.slug, post: attributes_for(:post, raw_content: '') }
 
           expect(response).to render_template :edit
         end
@@ -106,7 +106,7 @@ describe PostsController, type: :controller do
     describe 'DELETE#destroy' do
       it 'deletes the post' do
         expect do
-          delete :destroy, id: @post.slug
+          delete :destroy, params: { id: @post.slug }
         end.to change(Post, :count).by(-1)
       end
     end

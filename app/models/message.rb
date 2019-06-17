@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Message
   include ActiveModel::Model
 
@@ -6,6 +8,6 @@ class Message
   # TODO: antispam
   validates :name, :email, :subject, :content, presence: true
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, format: { with: VALID_EMAIL_REGEX }
 end

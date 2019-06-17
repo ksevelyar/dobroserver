@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUploader < BlogRecordUploader
   include CarrierWave::MiniMagick
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AttachmentsController < ApplicationController
   def create
     @record = BlogRecord.find_by!(slug: blog_record_params)

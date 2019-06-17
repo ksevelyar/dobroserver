@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Dobroserver::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -6,15 +8,28 @@ Dobroserver::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Enable/disable caching. By default caching is disabled.
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => 'public, max-age=172800'
+    }
+  else
+    config.action_controller.perform_caching = false
+    config.cache_store = :null_store
+  end
+
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  # Show full error reports.
+  config.consider_all_requests_local = true
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -27,6 +42,9 @@ Dobroserver::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
+
   config.action_mailer.default_url_options = { host: Settings.main.domain }
 
   config.after_initialize do
@@ -35,4 +53,6 @@ Dobroserver::Application.configure do
     Bullet.console = true
     Bullet.add_footer = true
   end
+
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end

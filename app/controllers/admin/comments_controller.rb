@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::CommentsController < ApplicationController
   def index
     @comments = Comment.recent.page(params[:page]).per(20)
